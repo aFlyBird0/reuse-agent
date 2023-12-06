@@ -1,4 +1,4 @@
-from action_to_model_agent.agent import PythonREPLArgs
+from action_to_tool_agent.agent import PythonREPLArgs
 
 example_fabinacci_sqrt_component_args: PythonREPLArgs = PythonREPLArgs(
     name="calculate_fibonacci_and_add_sqrt",
@@ -28,3 +28,29 @@ def calculate_fibonacci_and_add_sqrt(fibonacci_index, sqrt_number, decimal_place
 print(calculate_fibonacci_and_add_sqrt(fibonacci_index, sqrt_number, decimal_places))
 """
 )
+
+def get_examle_fibonacci_args() -> PythonREPLArgs:
+    name = "calculate_fibonacci"
+    description = "calculate fibonacci"
+    code = """
+def fibonacci(n):
+    if n <= 1:
+        return n
+
+    a, b = 0, 1
+    for _ in range(n - 1):
+        a, b = b, a + b
+
+    return b
+print(fibonacci(n))
+        """
+    args = {
+        "n": {
+            "type": "int",
+            "description": "the number of fibonacci"
+        }
+    }
+
+    return PythonREPLArgs(name=name, description=description, code=code, args=args)
+
+example_fibonacci_args = get_examle_fibonacci_args()

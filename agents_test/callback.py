@@ -24,7 +24,8 @@ class MyCustomSyncHandler(BaseCallbackHandler):
     def on_llm_end(self, response: langchain_core.outputs.LLMResult, **kwargs: Any) -> None:
         """Run when chain ends running."""
         # print("\nLLM调用结束....\n")
-        self.logger.info(f"llm_result: {response}")
+        # self.logger.info(f"llm_result: {response}")
+        self.logger.info(f"last llm message: {response.generations[-1][-1].text}")
         # print("Hi! I just woke up. Your llm is ending")
         # usage = response.llm_output["token_usage"]
         # # print(usage)

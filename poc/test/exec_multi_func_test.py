@@ -3,7 +3,7 @@ from io import StringIO
 
 from langchain_experimental.utilities import PythonREPL
 
-f = """
+f1 = """
 def fibonacci(n): 
     if n <= 0: 
         return 0 
@@ -25,6 +25,12 @@ def calculate_fibonacci_and_add_sqrt(fibonacci_index, sqrt_number, round_decimal
 # round_decimal = 2
 print(calculate_fibonacci_and_add_sqrt(fibonacci_index, sqrt_number, round_decimal))
 """
+
+args1 = {
+    "fibonacci_index": 10,
+    "sqrt_number": 6,
+    "round_decimal": 2,
+}
 
 f2 = """
 import math
@@ -53,25 +59,47 @@ def calculate_result(fib_index, sqrt_number, decimal_places):
 print(calculate_result(fib_index, sqrt_number, decimal_places))
 """
 
-if __name__ == '__main__':
-    args = {
-        "fibonacci_index": 10,
-        "sqrt_number": 6,
-        "round_decimal": 2,
-    }
-    # exec(f, args)
+args2 = {
+    "fib_index": 10,
+    "sqrt_number": 6,
+    "decimal_places": 2,
+}
 
-    args2 = {
-        "fib_index": 10,
-        "sqrt_number": 6,
-        "decimal_places": 2,
-    }
+f3 = """
+import math
+
+def calculate_fibonacci_and_add_sqrt(n, number):
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        a, b = 0, 1
+        for _ in range(2, n + 1):
+            a, b = b, a + b
+        return round(b + math.sqrt(number), 2)
+
+# 实参初始化/赋值语句应该被忽略，假设所有实参已经被正确赋值。
+# result = round(fibonacci(10) + math.sqrt(6), 2)
+result = calculate_fibonacci_and_add_sqrt(10, 6)
+print(result)
+"""
+
+args3 = {
+    "n": 10,
+    "number": 6,
+}
+
+if __name__ == '__main__':
+
+    f, args = f3, args3
     try:
-        exec(f2, args2)
+        exec(f, args)
     except Exception as e:
         print(e)
-    # print(PythonREPL(_globals=globals(), _locals=args2).run(f2))
 
-    from cot_component import my_exec
+    print(PythonREPL(_globals=args, _locals=args).run(f))
 
-    # print(my_exec(globals=args2, locals=args2, code=f2))
+    from poc.action_to_tool_agent.toolgen import my_exec
+
+    print(my_exec(code=f, args=args))

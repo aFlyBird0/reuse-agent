@@ -1,6 +1,11 @@
 import json
 import logging
 import re
+from ctypes import Union
+
+from langchain.agents import AgentOutputParser
+from langchain_core.agents import AgentAction, AgentFinish
+from langchain_core.exceptions import OutputParserException
 
 # 写一个函数，把输出中的json和python代码提取出来
 example_dict = {
@@ -38,27 +43,6 @@ example = f"""
 ```
 """
 
-
-# def split_json_and_code(text) -> (dict, str):
-#     """
-#     分隔json和python代码
-#     :param text: LLM的输出
-#     :return: json, python_code
-#     """
-#     pattern = r'```python(.*?)```'
-#     match = re.search(pattern, text, re.DOTALL)
-#     json_part = text.split('```')[0].strip()
-#     try:
-#         json_data = json.loads(json_part)
-#     except json.decoder.JSONDecodeError:
-#         logging.error("json decode error")
-#         logging.info(f"text: {text}")
-#         logging.info(f"json_part: {json_part}")
-#         return None, None
-#     python_code = match.group(1).strip()
-#
-#     return json_data, python_code
-
 def split_json_and_code(text) -> (dict, str):
     json_pattern = r'```json(.*?)```'
     python_pattern = r'```python(.*?)```'
@@ -70,6 +54,31 @@ def split_json_and_code(text) -> (dict, str):
     python_block = python_match.group(1).strip() if python_match else None
 
     return json_block, python_block
+
+
+class ArgsAndCodeOutputParser(AgentOutputParser):
+    def parse(self, output) -> AgentFinish:
+        """
+        :param output: LLM的输出
+        :return: json, python_code
+        """
+        json_data, python_code = split_json_and_code(output)
+        if json_data and python_code:
+            return AgentFinish(
+                return_values={
+                    "args": json_data,
+                    "code": python_code
+                },
+                log=output,
+            )
+        else:
+            raise OutputParserException(
+                f"Could not parse LLM output: `{output}`",
+                observation="You should only provide one json block and one python code block as the example above.",
+                llm_output=output,
+                send_to_llm=True,
+            )
+
 
 if __name__ == "__main__":
     dict_gotten, code_gotten = split_json_and_code(example)
