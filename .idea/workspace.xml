@@ -5,44 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c365fd41-3a94-44da-b9e8-509c153579fb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/conversation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/interpreter/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/interpreter/python.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/server.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ut/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/langchain_test.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agents_test/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agents_test/agent_iter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agents_test/callback.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agents_test/langchain_tot_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agents_test/react.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agents_test/structure_agent.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/openai.py" beforeDir="false" afterPath="$PROJECT_DIR$/llm/openai.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function_call_test/function_call_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loggers/logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/loggers/logs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/open_creator_test/open_creator_test_main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/action_to_tool_agent/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/action_to_tool_agent/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/interpreter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/action_to_tool_agent/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/action_to_tool_agent/agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/action_to_tool_agent/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/action_to_tool_agent/example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/action_to_tool_agent/output_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/action_to_tool_agent/output_parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/action_to_tool_agent/prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/action_to_tool_agent/prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/action_to_tool_agent/toolgen.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/cot_component.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/react_component.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/deprecated.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/deprecated.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/example_component.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/example_component.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/test/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/llm/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poc/test/exec_multi_func_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/ut/exec_multi_func_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/tool_custom.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/tot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +186,7 @@
       <workItem from="1701940826334" duration="377000" />
       <workItem from="1701941238983" duration="4825000" />
       <workItem from="1701946089454" duration="822000" />
-      <workItem from="1701946925231" duration="2993000" />
+      <workItem from="1701946925231" duration="3202000" />
     </task>
     <servers />
   </component>
@@ -242,11 +207,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>15</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/agents_test/agent_iter.py</url>
           <line>70</line>
@@ -331,7 +291,7 @@
     <SUITE FILE_PATH="coverage/langchain_test$custom.coverage" NAME="custom Coverage Results" MODIFIED="1701665568010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tool" />
     <SUITE FILE_PATH="coverage/langchain_test$python_chain.coverage" NAME="python_chain Coverage Results" MODIFIED="1701617519623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/agents_test" />
     <SUITE FILE_PATH="coverage/langchain_test$cot_component.coverage" NAME="react_component Coverage Results" MODIFIED="1701922006854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/poc" />
-    <SUITE FILE_PATH="coverage/reuse_agent$react_component.coverage" NAME="react_component Coverage Results" MODIFIED="1701949855113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/reuse_agent$react_component.coverage" NAME="react_component Coverage Results" MODIFIED="1701949970474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
     <SUITE FILE_PATH="coverage/reuse_agent$react__1_.coverage" NAME="react (1) Coverage Results" MODIFIED="1701942044227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/agents_test" />
     <SUITE FILE_PATH="coverage/langchain_test$py_exec_test.coverage" NAME="py_exec_test Coverage Results" MODIFIED="1701769025210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/poc" />
     <SUITE FILE_PATH="coverage/langchain_test$exec_multi_func_test__1_.coverage" NAME="exec_multi_func_test (1) Coverage Results" MODIFIED="1701873653757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
