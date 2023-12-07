@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "reuse-agent"
+version = "0.1.0"
+description = "reuse agent"
+authors = ["Bird <aflybird0@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+openai = "^1.3.7"
+langchain = "^0.0.347"
+tree-of-thoughts = "^0.3.7"
+numexpr = "^2.8.7"
+langchainhub = "^0.1.14"
+langchain-experimental = "^0.0.44"
+pymongo = "^4.6.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

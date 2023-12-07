@@ -5,7 +5,7 @@
 
 from langchain.chat_models import ChatOpenAI
 from langchain.llms import OpenAI
-from api.openai import OpenAIConfig
+from llm.openai import OpenAIConfig
 
 chat = ChatOpenAI(openai_api_key=OpenAIConfig.openai_api_key, openai_api_base=OpenAIConfig.openai_api_base)
 
