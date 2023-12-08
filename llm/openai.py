@@ -6,8 +6,7 @@ from langchain.output_parsers import StructuredOutputParser
 
 
 class OpenAIConfig:
-    # openai_api_key = "sk-gV4NdMWNmJ1moFG65d1f816cD3B3467a891841Ed97Cc1bA4"
-    openai_api_key = "sk-B3zQDHZPzq1NKnjD7b167c86909944378fC00b4a2369B1Be"
+    openai_api_key = "sk-N4Z4qZaCHoNfumWL4f13E49a4e8147Ef9dFd8fFcF9C1547e"
 
     openai_api_base = "https://api.gptapi.cyou/v1"
 
@@ -20,9 +19,10 @@ class OpenAIConfig:
     def defaultLLM():
         # os.environ["OPENAI_API_KEY"] = OpenAIConfig.openai_api_key
         return ChatOpenAI(
-            model_name="gpt-3.5-turbo-1106",
-            # model_name="gpt-4",
+            # model_name="gpt-3.5-turbo-1106",
+            model_name="gpt-4",
+            # model_name="gpt-3.5-turbo",
             openai_api_key=OpenAIConfig.openai_api_key,
             openai_api_base=OpenAIConfig.openai_api_base,
-            temperature=0
+            temperature=0,
         )

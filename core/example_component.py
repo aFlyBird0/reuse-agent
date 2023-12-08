@@ -1,9 +1,10 @@
-from action_to_tool_agent.agent import PythonModule
+from action_to_module.agent import PythonModule
 
 example_fabinacci_sqrt_component_args: PythonModule = PythonModule(
     name="calculate_fibonacci_and_add_sqrt",
     description="This function calculates the nth Fibonacci number, adds the square root of a given number to it, and rounds the result to a specified number of decimal places.",
     args={'fibonacci_index': 'int', 'sqrt_number': 'int', 'decimal_places': 'int'},
+    tags=['fibonacci', 'math'],
     code="""
 def calculate_fibonacci_and_add_sqrt(fibonacci_index, sqrt_number, decimal_places):
     def fibonacci(n):
@@ -44,6 +45,7 @@ def fibonacci(n):
     return b
 print(fibonacci(n))
         """
+    tags = ["fibonacci", "math"]
     args = {
         "n": {
             "type": "int",
@@ -51,6 +53,6 @@ print(fibonacci(n))
         }
     }
 
-    return PythonModule(name=name, description=description, code=code, args=args)
+    return PythonModule(name=name, description=description, code=code, args=args, tags=tags)
 
 example_fibonacci_args = get_examle_fibonacci_args()

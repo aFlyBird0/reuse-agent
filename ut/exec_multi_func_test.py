@@ -129,7 +129,7 @@ if __name__ == '__main__':
 
     # print(PythonREPL(_globals=args, _locals=args).run(f))
 
-    # from core.action_to_tool_agent.toolgen import my_exec
+    # from core.action_to_module.toolgen import my_exec
 
     # print(my_exec(code=f, args=args))
     # print(exec(f, args))

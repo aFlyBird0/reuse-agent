@@ -3,8 +3,10 @@ from fastapi import FastAPI
 from langchain.prompts import ChatPromptTemplate
 from langchain.chat_models import ChatAnthropic, ChatOpenAI
 from langserve import add_routes
-from react_component import get_all_tools, get_agent
-from action_to_tool_agent.agent import ActionToPythonAgent
+
+from react_component import get_all_tools, get_runnable
+from action_to_module.agent import ActionToPythonAgent
+from python_test.agent import python_test_agent
 
 import llm.openai
 
@@ -35,7 +37,7 @@ add_routes(
 )
 
 tools = get_all_tools()
-agent = get_agent(tools)
+agent = get_runnable(tools)
 add_routes(
     app,
     agent,
@@ -47,6 +49,13 @@ add_routes(
     app,
     agent_refactor,
     path="/agent_refactor",
+)
+
+agent_python_test = python_test_agent
+add_routes(
+    app,
+    agent_python_test,
+    path="/agent_python_test",
 )
 
 if __name__ == "__main__":

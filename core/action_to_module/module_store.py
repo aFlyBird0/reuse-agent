@@ -1,80 +1,11 @@
-import json
-from dataclasses import dataclass
 from typing import List
-
-from langchain_core.load import Serializable
-
-from .example import example_refactored_code, example_args_extracted_json
-
-
-# class BaseModule:
-#     name: str
-#     author: str = "admin"
-#     description: str
-#     tags: list[str]
-#     kind: str
-#
-#     def __init__(self, name, description, tags, kind, author="admin", **kwargs):
-#         self.name = name
-#         self.author = author
-#         self.description = description
-#         self.tags = tags
-#         self.kind = kind
-
-# extend from dict to support json serialization
-class PythonModule(dict):
-    def __init__(self, name, description, tags, code, args, author="admin", id="", **kwargs):
-        super().__init__(name=name, author=author, description=description, tags=tags, kind="Python", code=code,
-                         args=args, id=id)
-        self.name = name
-        self.author = author
-        self.description = description
-        self.tags = tags
-        self.kind = "Python"
-        self.code = code
-        self.args = args
-        self.id = id
-
-    def print(self, logger):
-        logger.info(f"重构后的Python代码信息，name：{self.name}, description: {self.description}, args: {self.args}")
-        logger.info(f"重构后的Python代码内容：\n{self.code}")
-
-    def __to_dict__(self):
-        return {
-            "name": self.name,
-            "author": self.author,
-            "description": self.description,
-            "tags": self.tags,
-            "kind": self.kind,
-            "code": self.code,
-            "args": self.args,
-            "id": self.id
-        }
-
-    def __to_json__(self):
-        print("触发序列化")
-        return json.dumps(self.__to_dict__(), indent=4)
-
-    def toJson(self):
-        return self.__to_json__()
-
 
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
+from core.action_to_module.module_define import example_fibonacci, PythonModule
+
 MODULE_COLLECTION = "module"
-
-
-def example_fibonacci() -> PythonModule:
-    args = PythonModule(
-        name=example_args_extracted_json["name"],
-        description=example_args_extracted_json["description"],
-        code=example_refactored_code,
-        args=example_args_extracted_json["args"],
-        tags=example_args_extracted_json["tags"]
-    )
-    return args
-
 
 class ModuleStore:
     """
@@ -105,15 +36,17 @@ class ModuleStore:
             print(f"已经成功添加模块：{module.author}/{module.name}")
             return res.inserted_id
 
+    def get_by_id(self, id: str) -> PythonModule:
+        col = self.col.find_one({"_id": id})
+        return self._col_to_mod(col)
+
     def list_by_filter(self, **filter) -> List[PythonModule]:
         cols = self.col.find(filter)
+
         # for col in cols:
         #     print(col)
-        def col_to_mod(col):
-            mod = PythonModule(**col)
-            mod.id = str(col["_id"])
-            return mod
-        return [col_to_mod(col) for col in cols]
+
+        return [self._col_to_mod(col) for col in cols]
 
     def list(self) -> List[PythonModule]:
         return self.list_by_filter()
@@ -144,6 +77,11 @@ class ModuleStore:
     def delete_by_id(self, id: str):
         self.col.delete_one({"_id": id})
 
+    def _col_to_mod(self, col)->PythonModule:
+        mod = PythonModule(**col)
+        mod.id = str(col["_id"])
+        return mod
+
     def print_all(self, logger):
         for module in self.modules:
             module.print(logger)
@@ -152,17 +90,18 @@ class ModuleStore:
 if __name__ == "__main__":
     m = ModuleStore()
     python_test_module = PythonModule(
-        name="test_py_math",
+        name="test_py_math2",
         description="xxx",
         author="admin",
         tags=["test", "math"],
         code="print('hello world')",
-        args={},
+        args={"number": "int"},
     )
 
     m.add(example_fibonacci())
     id = m.add(python_test_module)
     print(f"id inserted {id}")
+    print(f"get last inserted: {m.get_by_id(id)}")
 
     # for v in m.list_modules_by_filter():
     #     print(vars(v))

@@ -36,6 +36,7 @@ example_args_extracted_json = {
         "number": "int"
     },
     "tags": ["math", "fibonacci", "calculation"],
+    "dependencies": []
 }
 
 example_cn_additional_info = """

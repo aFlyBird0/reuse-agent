@@ -1,13 +1,12 @@
-from typing import List, Dict
+from typing import List, Dict, Tuple
 
 from langchain_core.agents import AgentAction
 from langchain_core.messages import BaseMessage
 
-
 class ConversationInfo:
     question: str
-    actions: List[AgentAction] = None
-    actions_maps: Dict[str, AgentAction] = None  # nodeID->Action
+    actions: List[Tuple[AgentAction, str]] = None    # action, result
+    # actions_maps: Dict[str, AgentAction] = None  # nodeID->Action
     messages: List[BaseMessage]
 
     def __init__(self, question: str):
@@ -16,11 +15,11 @@ class ConversationInfo:
         self.actions_maps = {}
         self.messages = []
 
-    def add_action(self, action: AgentAction):
-        self.actions.append(action)
+    def add_action(self, action: AgentAction, result: str):
+        self.actions.append((action, result))
 
     def show_actions(self):
-        return [action.log for action in self.actions]
+        return [(action[0].log, action[1]) for action in self.actions]
 
     def get_actions(self):
         return self.actions

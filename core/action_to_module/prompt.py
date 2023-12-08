@@ -141,6 +141,7 @@ Python Code:
 * description: 函数描述
 * args: 函数参数列表，其中包含参数名称和类型
 * tags: 若干个标签，用于描述函数的功能/用途/特性/分类等等
+* dependencies: 需要安装的python包
 后面空一行，然后是重构后的Python代码块。
 
 完整回复例子如下：
