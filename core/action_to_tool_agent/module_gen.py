@@ -7,7 +7,7 @@ from langchain_core.tools import BaseTool, StructuredTool
 from langchain_experimental.tools import PythonREPLTool
 from langchain_experimental.utilities import PythonREPL
 # Third-party Library Imports
-from pydantic.v1 import BaseModel, create_model
+from pydantic import BaseModel, create_model
 from .agent import ActionToPythonAgent
 from .module_define import PythonModule, ModuleStore
 from loggers.logs import setup_logger

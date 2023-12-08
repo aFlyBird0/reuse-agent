@@ -20,8 +20,8 @@ class OpenAIConfig:
     def defaultLLM():
         # os.environ["OPENAI_API_KEY"] = OpenAIConfig.openai_api_key
         return ChatOpenAI(
-            # model_name="gpt-3.5-turbo-1106",
-            model_name="gpt-4",
+            model_name="gpt-3.5-turbo-1106",
+            # model_name="gpt-4",
             openai_api_key=OpenAIConfig.openai_api_key,
             openai_api_base=OpenAIConfig.openai_api_base,
             temperature=0

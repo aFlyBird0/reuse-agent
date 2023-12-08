@@ -1,5 +1,9 @@
+import json
 from dataclasses import dataclass
 from typing import List
+
+from langchain_core.load import Serializable
+
 from .example import example_refactored_code, example_args_extracted_json
 
 
@@ -17,8 +21,11 @@ from .example import example_refactored_code, example_args_extracted_json
 #         self.tags = tags
 #         self.kind = kind
 
-class PythonModule:
-    def __init__(self, name, description, tags, code, args, author="admin", **kwargs):
+# extend from dict to support json serialization
+class PythonModule(dict):
+    def __init__(self, name, description, tags, code, args, author="admin", id="", **kwargs):
+        super().__init__(name=name, author=author, description=description, tags=tags, kind="Python", code=code,
+                         args=args, id=id)
         self.name = name
         self.author = author
         self.description = description
@@ -26,10 +33,30 @@ class PythonModule:
         self.kind = "Python"
         self.code = code
         self.args = args
+        self.id = id
 
     def print(self, logger):
         logger.info(f"重构后的Python代码信息，name：{self.name}, description: {self.description}, args: {self.args}")
         logger.info(f"重构后的Python代码内容：\n{self.code}")
+
+    def __to_dict__(self):
+        return {
+            "name": self.name,
+            "author": self.author,
+            "description": self.description,
+            "tags": self.tags,
+            "kind": self.kind,
+            "code": self.code,
+            "args": self.args,
+            "id": self.id
+        }
+
+    def __to_json__(self):
+        print("触发序列化")
+        return json.dumps(self.__to_dict__(), indent=4)
+
+    def toJson(self):
+        return self.__to_json__()
 
 
 from pymongo.mongo_client import MongoClient
@@ -72,14 +99,21 @@ class ModuleStore:
     def add(self, module: PythonModule):
         # insert if name not exist
         if not self.col.find_one({"name": module.name, "author": module.author}):
-            self.col.insert_one(module.__dict__)
+            module_dict = module.__dict__
+            del module_dict["id"]
+            res = self.col.insert_one(module_dict)
             print(f"已经成功添加模块：{module.author}/{module.name}")
+            return res.inserted_id
 
     def list_by_filter(self, **filter) -> List[PythonModule]:
         cols = self.col.find(filter)
         # for col in cols:
         #     print(col)
-        return [PythonModule(**col) for col in cols]
+        def col_to_mod(col):
+            mod = PythonModule(**col)
+            mod.id = str(col["_id"])
+            return mod
+        return [col_to_mod(col) for col in cols]
 
     def list(self) -> List[PythonModule]:
         return self.list_by_filter()
@@ -107,6 +141,9 @@ class ModuleStore:
                 modules.append(module)
         return modules
 
+    def delete_by_id(self, id: str):
+        self.col.delete_one({"_id": id})
+
     def print_all(self, logger):
         for module in self.modules:
             module.print(logger)
@@ -114,7 +151,7 @@ class ModuleStore:
 
 if __name__ == "__main__":
     m = ModuleStore()
-    python_module = PythonModule(
+    python_test_module = PythonModule(
         name="test_py_math",
         description="xxx",
         author="admin",
@@ -124,6 +161,8 @@ if __name__ == "__main__":
     )
 
     m.add(example_fibonacci())
+    id = m.add(python_test_module)
+    print(f"id inserted {id}")
 
     # for v in m.list_modules_by_filter():
     #     print(vars(v))
@@ -133,5 +172,10 @@ if __name__ == "__main__":
         print(vars(v))
 
     print("tags and")
-    for v in m.list_by_tags_and(["test", "math"]):
+    for v in m.list_by_tags_and(["fibonacci", "math"]):
+        print(vars(v))
+
+    m.delete_by_id(id)
+
+    for v in m.list():
         print(vars(v))

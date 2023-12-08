@@ -26,7 +26,7 @@ class ActionToPythonAgent():
     def __init__(self, **kwargs: Any):
         super().__init__(**kwargs)
         self.logger = setup_logger()
-        self.agent = self._setup_agent(OpenAIConfig.defaultLLM())
+        self.agent = self.setup_agent(OpenAIConfig.defaultLLM())
 
     @property
     def _chain_type(self):
@@ -53,7 +53,7 @@ class ActionToPythonAgent():
 
         return pyREPLArgs
 
-    def _setup_agent(self, llm):
+    def setup_agent(self, llm):
         prompt = ChatPromptTemplate.from_messages(
             [
                 SystemMessagePromptTemplate.from_template(SYSTEM_PROMPT_CN_TEMPLATE),
