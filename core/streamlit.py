@@ -8,9 +8,6 @@ from langchain.callbacks import get_openai_callback
 import sys
 
 from langchain_core.agents import AgentAction
-
-from core.action_to_module.agent import ActionToPythonAgent
-
 sys.path.append('.')
 sys.path.append('..')
 sys.path.append('../..')
@@ -25,6 +22,8 @@ from llm.openai import OpenAIConfig
 from loggers.logs import setup_logger
 from core.streamlit_component import display_conversation_info
 from core.react_component import react_and_conversation
+from core.action_to_module.agent import ActionToPythonAgent
+
 
 logger = setup_logger()
 
@@ -104,11 +103,10 @@ def main():
 
 
 if __name__ == '__main__':
-    module_store = ModuleStore()
-    module_gen = ModuleGenerator()
+
     llm = OpenAIConfig.defaultLLM()
 
-    tools = get_all_tools(module_gen=module_gen, store=module_store)
+    tools = get_all_tools()
 
     agent = get_agent(tools)
     logging.basicConfig(level=logging.INFO)

@@ -7,6 +7,7 @@ from core.action_to_module.module_define import example_fibonacci, PythonModule
 
 MODULE_COLLECTION = "module"
 
+
 class ModuleStore:
     """
     save/load modules from mongodb
@@ -77,7 +78,7 @@ class ModuleStore:
     def delete_by_id(self, id: str):
         self.col.delete_one({"_id": id})
 
-    def _col_to_mod(self, col)->PythonModule:
+    def _col_to_mod(self, col) -> PythonModule:
         mod = PythonModule(**col)
         mod.id = str(col["_id"])
         return mod
@@ -86,6 +87,8 @@ class ModuleStore:
         for module in self.modules:
             module.print(logger)
 
+
+default_module_store = ModuleStore()
 
 if __name__ == "__main__":
     m = ModuleStore()

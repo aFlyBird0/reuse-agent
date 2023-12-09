@@ -10,7 +10,7 @@ from langchain_experimental.utilities import PythonREPL
 from pydantic import BaseModel, create_model
 from .agent import ActionToPythonAgent
 from .module_define import PythonModule
-from .module_store import ModuleStore
+from .module_store import ModuleStore, default_module_store
 from loggers.logs import setup_logger
 from .example import example_refactored_code, example_args_extracted_json
 from ..interpreter.python import PythonInterpreter
@@ -23,7 +23,7 @@ class ModuleGenerator:
 
         self.agent = ActionToPythonAgent()
 
-    def all_from_db(self,store: ModuleStore = ModuleStore()) -> List[StructuredTool]:
+    def all_from_db(self, store: ModuleStore = default_module_store) -> List[StructuredTool]:
         return [self.from_python_args(args) for args in store.list()]
 
     def from_action(self, action: AgentAction, question: str = "") -> Union[BaseTool, None]:
@@ -91,3 +91,6 @@ class ModuleGenerator:
         dynamic_model = create_model(model_name, **model_fields)
         # dynamic_model = type(model_name, (BaseModel,), model_fields)
         return dynamic_model
+
+
+default_module_generator = ModuleGenerator()

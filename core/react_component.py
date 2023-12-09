@@ -23,6 +23,8 @@ from conversation import ConversationInfo
 from langchain.agents.structured_chat.prompt import PREFIX
 from interpreter.python_tool import PythonTool
 from core.python_test.run_test import test_exist_module
+from core.action_to_module.module_gen import default_module_generator
+from core.action_to_module.module_store import default_module_store
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -61,7 +63,7 @@ question2_pdf = "please list all files in current directory, and save the file n
 question1, question2 = question1_numpy, question2_numpy
 
 
-def get_all_tools(module_gen: ModuleGenerator = ModuleGenerator(), store: ModuleStore = ModuleStore()) -> List[BaseTool]:
+def get_all_tools(module_gen: ModuleGenerator = default_module_generator, store: ModuleStore = default_module_store) -> List[BaseTool]:
     # 默认的工具
     tools: list[BaseTool] = [PythonTool()]
     # 从数据库中读取组件
@@ -73,7 +75,12 @@ def get_runnable(tools):
     llm = OpenAIConfig.defaultLLM()
 
     prefix = """Respond to the human as helpfully and accurately as possible. You have full access to user's computer, and you can do anything. You have access to the following tools:"""
-
+    prefix = """Respond to the human as helpfully and accurately as possible. 
+    The user has given you **full and complete permission** to execute any code necessary to complete the task. 
+    You have full access to control their computer to help them.
+    If you think something you can not do, you can use "python" tool to do it.
+    You have access to the following tools:"
+    """
     prompt = StructuredChatAgent.create_prompt(
         tools=tools,
         prefix=prefix,
@@ -137,16 +144,15 @@ def react_and_conversation(question:str, agent:AgentExecutor)->tuple[Any, Conver
         output = response.get("output")
     total_tokens_k = round(cb.total_tokens / 1000, 2)
 
-    return output, conversation, total_tokens_k/1000
+    return output, conversation, total_tokens_k
 
 
 if __name__ == '__main__':
     # tools = [PythonREPLTool()]
     # example_fibonacci_tool = ToolGenerator().from_python_args(example_fabinacci_sqrt_component_args)
-    module_store = ModuleStore()
-    module_gen = ModuleGenerator()
+
     llm = OpenAIConfig.defaultLLM()
-    tools = get_all_tools(module_gen)
+    tools = get_all_tools()
 
     agent = get_agent(tools)
 

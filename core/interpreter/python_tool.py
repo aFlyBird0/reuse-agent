@@ -22,6 +22,7 @@ class PythonTool(StructuredTool):
         "With this tool you can do anything by writing python code(including operate user's machine). "
         "If the code import packages which is not built-in, please specify the dependencies in tool_input."
         # "If you want to see the output of a value, you should print it out "
+        "Never use (!) when running commands."
         "Remember to print out the result or success info"
         "with `print(...)`."
     )
