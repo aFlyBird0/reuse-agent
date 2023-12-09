@@ -17,15 +17,14 @@ from ..interpreter.python import PythonInterpreter
 
 
 class ModuleGenerator:
-    def __init__(self, logger: logging.Logger = None):
+    def __init__(self, logger: logging.Logger = None, ):
         if logger is None:
             self.logger = setup_logger()
 
         self.agent = ActionToPythonAgent()
-        self.store = ModuleStore()
 
-    def all_from_db(self) -> List[StructuredTool]:
-        return [self.from_python_args(args) for args in self.store.list()]
+    def all_from_db(self,store: ModuleStore = ModuleStore()) -> List[StructuredTool]:
+        return [self.from_python_args(args) for args in store.list()]
 
     def from_action(self, action: AgentAction, question: str = "") -> Union[BaseTool, None]:
         if action.tool == PythonREPLTool().name:
@@ -82,7 +81,7 @@ class ModuleGenerator:
     def _create_args_schema(self, args_dict: dict, model_name: str = "DynamicModel") -> Type[BaseModel]:
         model_fields = {}
 
-        self.logger.info(f"start to create args schema, args_dict: {args_dict}")
+        # self.logger.info(f"start to create args schema, args_dict: {args_dict}")
 
         for arg_name, arg_info in args_dict.items():
             # arg_type = arg_info["type"]

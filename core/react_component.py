@@ -10,6 +10,7 @@ from langchain.chains import LLMChain
 
 # Internal Imports
 from callbacks.callback import MyCustomSyncHandler
+from core.action_to_module.agent import ActionToPythonAgent
 from core.action_to_module.module_store import ModuleStore
 from llm.openai import OpenAIConfig
 from langchain.agents import initialize_agent, AgentExecutor, StructuredChatAgent
@@ -60,12 +61,11 @@ question2_pdf = "please list all files in current directory, and save the file n
 question1, question2 = question1_numpy, question2_numpy
 
 
-def get_all_tools() -> List[BaseTool]:
-    module_gen = ModuleGenerator()
+def get_all_tools(module_gen: ModuleGenerator = ModuleGenerator(), store: ModuleStore = ModuleStore()) -> List[BaseTool]:
     # 默认的工具
     tools: list[BaseTool] = [PythonTool()]
     # 从数据库中读取组件
-    tools = tools + module_gen.all_from_db()
+    tools = tools + module_gen.all_from_db(store=store)
     return tools
 
 
@@ -79,7 +79,7 @@ def get_runnable(tools):
         prefix=prefix,
         input_variables=["input"],
     )
-    logger.info(f"prompt: {prompt.format}")
+    # logger.info(f"prompt: {prompt.format}")
 
     return prompt | llm
 
@@ -94,7 +94,7 @@ def get_agent(tools):
         prefix=prefix,
         input_variables=["input"],
     )
-    logger.info(f"prompt: {prompt.format}")
+    # logger.info(f"prompt: {prompt.format}")
     agent = StructuredChatAgent(
         llm_chain=LLMChain(llm=llm, prompt=prompt),
         prompt=prompt,
@@ -124,11 +124,10 @@ def get_agent(tools):
 if __name__ == '__main__':
     # tools = [PythonREPLTool()]
     # example_fibonacci_tool = ToolGenerator().from_python_args(example_fabinacci_sqrt_component_args)
+    module_store = ModuleStore()
     module_gen = ModuleGenerator()
     llm = OpenAIConfig.defaultLLM()
-    module_store = ModuleStore()
-
-    tools = get_all_tools()
+    tools = get_all_tools(module_gen)
 
     agent = get_agent(tools)
 
@@ -148,30 +147,6 @@ if __name__ == '__main__':
                 logger.info(f"action: {action}, value: {action_result}")
                 conversation.add_action(action, action_result)
             print(f"output: {response.get('output')}")
-        logger.info(f'total tokens: {cb.total_tokens / 1000}k')
-
-
-    def ask2(question: str, agent: AgentExecutor):
-        with get_openai_callback() as cb:
-            i = 1
-            for step in agent.iter(question, callbacks=[MyCustomSyncHandler()]):
-                logger.info(f"The {i}th step: {step}")
-                if output := step.get("intermediate_step"):
-                    action, action_result = output[0]
-                    # if action.tool == PythonREPLTool().name:
-                    # logger.info(f"step: {step}")
-                    logger.info(f"action: {action}, value: {action_result}")
-                    conversation.add_action(action, action_result)
-                    # Ask user if they want to continue
-                    # _continue = input("Should the agent continue (Y/n)?:\n")
-                    # if _continue != "Y":
-                    #     break
-                else:
-                    logger.info(f"output: {step['output']}")
-                i += 1
-                if i > 5:
-                    logger.warning(f"i > 5, break")
-                    break
         logger.info(f'total tokens: {cb.total_tokens / 1000}k')
 
 
@@ -197,7 +172,7 @@ if __name__ == '__main__':
             _continue = input("Would you transform the action above into a new module (Y/n)?:\n")
             if _continue != "Y":
                 continue
-            module_args = module_gen.agent.python_args_from_action(action, question1)
+            module_args = ActionToPythonAgent().python_args_from_action(action, question1)
             test_res = test_exist_module(module_args)
             # 出错，跳过
             if test_res.stderr is not None:
