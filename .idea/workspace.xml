@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c365fd41-3a94-44da-b9e8-509c153579fb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/streamlit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/streamlit_component.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/streamlit/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/streamlit/streamlit_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/action_to_module/module_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/action_to_module/module_gen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/action_to_module/prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/action_to_module/prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/deprecated.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/deprecated.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/file_names.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core/react_component.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/react_component.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_names.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/streamlit.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/streamlit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +252,7 @@
       <workItem from="1702025988061" duration="12598000" />
       <workItem from="1702051665114" duration="1252000" />
       <workItem from="1702052937262" duration="9079000" />
-      <workItem from="1702126981464" duration="5802000" />
+      <workItem from="1702126981464" duration="6686000" />
     </task>
     <servers />
   </component>
@@ -330,7 +320,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/core/react_component.py</url>
-          <line>203</line>
+          <line>211</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

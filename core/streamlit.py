@@ -24,27 +24,9 @@ from core.react_component import get_all_tools, get_agent
 from llm.openai import OpenAIConfig
 from loggers.logs import setup_logger
 from core.streamlit_component import display_conversation_info
+from core.react_component import react_and_conversation
 
 logger = setup_logger()
-
-def process_input(question):
-    conversation = ConversationInfo(question=question)
-    def ask(question: str, agent: AgentExecutor):
-        with get_openai_callback() as cb:
-            response = agent.invoke({"input": question})
-            intermediate_steps = response.get("intermediate_steps")
-            for step in intermediate_steps:
-                logger.info(f"step: {step}")
-                action, action_result = step
-                logger.info(f"action: {action}, value: {action_result}")
-                conversation.add_action(action, action_result)
-            print(f"output: {response.get('output')}")
-        logger.info(f'total tokens: {cb.total_tokens / 1000}k')
-        return response.get('output')
-
-    # 第一轮
-    return ask(question, agent), conversation
-
 
 def extract_module_and_test(action: AgentAction, **kwargs):
     action_res = kwargs.get('result')
@@ -94,20 +76,20 @@ def main():
     # 添加一个按钮
     if st.button('请求'):
         # 当按钮被点击时，调用 process_input 函数，并显示处理后的结果
-        processed_result, conversation = process_input(question)
+        processed_result, conversation, total_tokens_k = react_and_conversation(question, agent)
         st.write('结果:', processed_result)
 
         logger.info(f"conversation history:")
         for info in conversation.show_actions():
             logger.info(info)
 
-        logger.info("finished first round!")
-
         display_conversation_info(conversation, extract_module_and_test)
 
         # 展示结果
         st.subheader('Result:')
         st.write(processed_result)
+        st.subheader('Total Tokens:')
+        st.write(f"{total_tokens_k}k")
 
         # 保存ConversationInfo对象到文件
         # save_conversation_info(conversation, 'example_conversation.pkl')

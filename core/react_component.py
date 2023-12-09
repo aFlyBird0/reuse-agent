@@ -1,7 +1,7 @@
 # 验证基于 CoT 的组件化归纳
 # Standard Library Imports
 import logging
-from typing import List
+from typing import List, Any
 
 from langchain.agents.structured_chat.output_parser import StructuredChatOutputParserWithRetries
 from langchain.chains import LLMChain
@@ -121,6 +121,25 @@ def get_agent(tools):
     return agent
 
 
+def react_and_conversation(question:str, agent:AgentExecutor)->tuple[Any, ConversationInfo, float]:
+    """
+    执行一轮对话，返回对话的结果
+    """
+    conversation = ConversationInfo(question=question)
+    with get_openai_callback() as cb:
+        response = agent.invoke({"input": question},{"callbacks": [MyCustomSyncHandler()]})
+        intermediate_steps = response.get("intermediate_steps")
+        for step in intermediate_steps:
+            logger.info(f"step: {step}")
+            action, action_result = step
+            logger.info(f"action: {action}, value: {action_result}")
+            conversation.add_action(action, action_result)
+        output = response.get("output")
+    total_tokens_k = round(cb.total_tokens / 1000, 2)
+
+    return output, conversation, total_tokens_k/1000
+
+
 if __name__ == '__main__':
     # tools = [PythonREPLTool()]
     # example_fibonacci_tool = ToolGenerator().from_python_args(example_fabinacci_sqrt_component_args)
@@ -134,32 +153,17 @@ if __name__ == '__main__':
     # question1 = "What is the 10th fibonacci number?"
     # question2 = "What is the 20th fibonacci number?"
 
-    conversation = ConversationInfo(question=question1)
-
-
-    def ask(question: str, agent: AgentExecutor):
-        with get_openai_callback() as cb:
-            response = agent.invoke({"input": question}, {"callbacks": [MyCustomSyncHandler()]})
-            intermediate_steps = response.get("intermediate_steps")
-            for step in intermediate_steps:
-                logger.info(f"step: {step}")
-                action, action_result = step
-                logger.info(f"action: {action}, value: {action_result}")
-                conversation.add_action(action, action_result)
-            print(f"output: {response.get('output')}")
-        logger.info(f'total tokens: {cb.total_tokens / 1000}k')
-
-
     # 第一轮
-    ask(question1, agent)
-
+    output, conversation, total_tokens_k = react_and_conversation(question1, agent)
+    logger.info(f"output: {output}")
+    logger.info(f'total tokens: {total_tokens_k}k')
+    logger.info("finished first round!")
 
     logger.info(f"conversation history:")
     for info in conversation.show_actions():
         logger.info(info)
 
-    logger.info("finished first round!")
-
+    logger.info(f"the second round:")
 
     def conversation_to_tools(conversation: ConversationInfo):
         # 把第一轮的代码封装成新的 Tool
@@ -196,9 +200,13 @@ if __name__ == '__main__':
 
     # 把新的 Tool 加入到 agent 中
     conversation_to_tools(conversation)
-    # agent = get_agent(tools)
+    agent = get_agent(tools)
     #
     # # 第二轮
-    # ask(question2, agent)
+    output, conversation, total_tokens_k = react_and_conversation(question2, agent)
+    logger.info(f"output: {output}")
+    logger.info(f'total tokens: {total_tokens_k}k')
+    logger.info("finished second round!")
+
 
     logger.info("finished!")
