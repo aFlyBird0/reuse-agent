@@ -12,7 +12,7 @@ from core.python_test.prompt import get_tool_description, example_code, example_
 from llm.openai import OpenAIConfig
 
 
-class RemoveCodeBlockBorderOutputParser(AgentOutputParser):
+class RemoveJsonCodeBlockBorderOutputParser(AgentOutputParser):
     def parse(self, output) -> str:
         output = output.strip()
         output = output.lstrip("```json")
@@ -41,7 +41,7 @@ def get_python_test_agent(llm):
 
     llm.bind(input_keys=["code", "code_args"])
 
-    agent = prompt | llm | RemoveCodeBlockBorderOutputParser() | JsonOutputParser()
+    agent = prompt | llm | RemoveJsonCodeBlockBorderOutputParser() | JsonOutputParser()
 
     return agent
 
