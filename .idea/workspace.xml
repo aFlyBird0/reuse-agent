@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c365fd41-3a94-44da-b9e8-509c153579fb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/refactor_module/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/refactor_module/agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/refactor_module/agent_function_call_example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/refactor_module/base_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/refactor_module/module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/refactor_module/prompt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deprecated/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deprecated/agent_bak_function_call_fail.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deprecated/base_agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/action_to_module/module_define.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/action_to_module/module_define.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/action_to_module/prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/action_to_module/prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/deprecated.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/deprecated.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/python_test/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/python_test/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/deprecated.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/deprecated.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/refactor_module/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/refactor_module/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/refactor_module/agent_function_call_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/agents_test/agent_function_call_example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/refactor_module/base_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/refactor_module/base_agent.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,11 +92,11 @@
       <recent name="$PROJECT_DIR$/core/open-interpreter" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/agents_test" />
+      <recent name="$PROJECT_DIR$/deprecated" />
       <recent name="$PROJECT_DIR$/core" />
       <recent name="$PROJECT_DIR$/tests" />
       <recent name="$PROJECT_DIR$/callbacks" />
-      <recent name="$PROJECT_DIR$/test" />
-      <recent name="$PROJECT_DIR$/poc" />
     </key>
   </component>
   <component name="RunManager" selected="Python.agent (1)">
@@ -147,6 +144,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="agent_bak_function_call_fail" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="reuse-agent" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/refactor_module" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/deprecated/agent_bak_function_call_fail.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="module" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="reuse-agent" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -161,28 +180,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/module_function_call/module.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="module_store" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="reuse-agent" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/action_to_module" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/action_to_module/module_store.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -215,18 +212,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.agent (1)" />
+      <item itemvalue="Python.agent_bak_function_call_fail" />
       <item itemvalue="Python.module" />
       <item itemvalue="Python.agent" />
-      <item itemvalue="Python.module_store" />
       <item itemvalue="Python.streamlit" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.agent (1)" />
+        <item itemvalue="Python.agent_bak_function_call_fail" />
         <item itemvalue="Python.agent" />
         <item itemvalue="Python.module" />
         <item itemvalue="Python.streamlit" />
-        <item itemvalue="Python.module_store" />
       </list>
     </recent_temporary>
   </component>
@@ -260,7 +257,7 @@
       <workItem from="1702025988061" duration="12598000" />
       <workItem from="1702051665114" duration="1252000" />
       <workItem from="1702052937262" duration="9079000" />
-      <workItem from="1702126981464" duration="21006000" />
+      <workItem from="1702126981464" duration="23411000" />
     </task>
     <servers />
   </component>
@@ -372,22 +369,22 @@
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/core/refactor_module/agent.py</url>
+          <url>file://$PROJECT_DIR$/deprecated/agent_bak_function_call_fail.py</url>
           <line>189</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/core/refactor_module/agent.py</url>
+          <url>file://$PROJECT_DIR$/deprecated/agent_bak_function_call_fail.py</url>
           <line>120</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/core/refactor_module/agent.py</url>
+          <url>file://$PROJECT_DIR$/deprecated/agent_bak_function_call_fail.py</url>
           <line>122</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/core/refactor_module/agent.py</url>
+          <url>file://$PROJECT_DIR$/deprecated/agent_bak_function_call_fail.py</url>
           <line>109</line>
           <option name="timeStamp" value="68" />
         </line-breakpoint>
@@ -432,7 +429,7 @@
     <SUITE FILE_PATH="coverage/langchain_test$react.coverage" NAME="react Coverage Results" MODIFIED="1701921717098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/agents_test" />
     <SUITE FILE_PATH="coverage/reuse_agent$prompt.coverage" NAME="prompt Coverage Results" MODIFIED="1702036122851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/python_test_agent" />
     <SUITE FILE_PATH="coverage/reuse_agent$streamlit.coverage" NAME="streamlit Coverage Results" MODIFIED="1702146508304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
-    <SUITE FILE_PATH="coverage/reuse_agent$agent__1_.coverage" NAME="agent (1) Coverage Results" MODIFIED="1702207684355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/refactor_module" />
+    <SUITE FILE_PATH="coverage/reuse_agent$agent__1_.coverage" NAME="agent (1) Coverage Results" MODIFIED="1702268605404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/refactor_module" />
     <SUITE FILE_PATH="coverage/reuse_agent$run_test.coverage" NAME="run_test Coverage Results" MODIFIED="1702055007774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/python_test" />
     <SUITE FILE_PATH="coverage/reuse_agent$module_define.coverage" NAME="module_define Coverage Results" MODIFIED="1701958188146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/action_to_tool_agent" />
   </component>
