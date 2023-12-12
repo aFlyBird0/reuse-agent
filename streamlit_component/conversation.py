@@ -38,51 +38,36 @@ def extract_content_before_first_action(text):
         content = match.group(1).strip()
         return content
 
-key_confirm_action_to_component = "key_confirm_action_to_component"
+key_confirm_action_to_module = "key_confirm_action_to_module"
 
+def get_state_confirm_action_to_module()->bool:
+    return st.session_state.get(key_confirm_action_to_module, False)
 
-def action_to_module_confirm(action: AgentAction, result: str, question: str, index: int):
-    # 这里是执行动作的函数钩子
-    st.divider()
-    st.title("Action to Module")
-    st.write(f"正在将当前Action转化为新的组件")
-    action_res = result
-    st.info(f"action_tool: {action.tool}")
-    st.info(f"action_tool_input: ")
-    st.json(action.tool_input)
+def set_state_confirm_action_to_module(confirm: bool):
+    st.session_state[key_confirm_action_to_module] = confirm
 
-    # st.code(action.tool_input)
-    st.info(f"action_tool_result: {action_res}")
+key_finish_action_to_module = "finish_action_to_module"
+def get_state_finish_action_to_module()->bool:
+    return st.session_state.get(key_finish_action_to_module, False)
 
-    def confirm_action_to_component(confirm: bool):
-        st.session_state[key_confirm_action_to_component] = confirm
+def set_state_finish_action_to_module(finish: bool):
+    st.session_state[key_finish_action_to_module] = finish
 
-    with st.container():
-        # col1, col2 = st.columns(2)
-        # col1.button("Confirm", key="button_confirm_action_to_component", on_click=confirm_action_to_component, args=[True])
-        st.button("我要转换", key="button_confirm_action_to_component", on_click=confirm_action_to_component, args=[True])
-        # col2.button("Cancel", key="button_cancel_action_to_component", on_click=confirm_action_to_component, args=[False])
+key_action_to_module_args = "key_action_to_module_args"
+def get_state_action_to_module_args()->dict:
+    return st.session_state.get(key_action_to_module_args, {})
+def set_state_action_to_module_args(args: dict):
+    st.session_state[key_action_to_module_args] = args
+def clear_state_action_to_module_args():
+    del st.session_state[key_action_to_module_args]
 
-
-def execute_action_to_module(module_generator: Callable[[AgentAction, str, str, int], Module]):
-    key_finish_action_to_component = "finish_action_to_component"
-    if st.session_state.get(key_confirm_action_to_component, False):
-        if not st.session_state.get(key_finish_action_to_component, False):
-            action = st.session_state["action_to_component"]["action"]
-            result = st.session_state["action_to_component"]["result"]
-            question = st.session_state["action_to_component"]["question"]
-            index = st.session_state["action_to_component"]["index"]
-            module = module_generator(action, result, question, index)
-            st.session_state["module"] = module
-            st.session_state[key_finish_action_to_component] = True
-
-
-def show_module():
-    if "module" in st.session_state:
-        st.title("New Module")
-        module = st.session_state["module"]
-        display_module(module)
-
+key_converted_module = "converted_module"
+def set_state_converted_module(module: Module):
+    st.session_state[key_converted_module] = module
+def get_state_converted_module()->Module:
+    return st.session_state.get(key_converted_module, None)
+def clear_state_converted_module():
+    del st.session_state[key_converted_module]
 
 def display_conversation_info(conversation: ConversationInfo):
     st.title('Conversation Information')
@@ -113,36 +98,87 @@ def display_conversation_info(conversation: ConversationInfo):
                             button_label = f"把当前Action转化为新的组件"
                             kwargs = {"action": action, "result": result, "question": conversation.question,
                                       "index": index}
-
-                            def set_action_to_component():
-                                st.session_state[f"action_to_component"] = kwargs
+                            def on_click_save_args():
+                                set_state_action_to_module_args(kwargs)
 
                             button_key = f"extract_to_component_{index}_{action.tool}"
-                            col1.button(button_label, key=button_key, on_click=set_action_to_component)
+                            col1.button(button_label, key=button_key, on_click=on_click_save_args)
     else:
         st.write("No actions found.")
 
+def action_to_module_confirm(action: AgentAction, result: str, question: str, index: int):
+    # 这里是执行动作的函数钩子
+    st.divider()
+    st.title("Action to Module")
+    st.write(f"即将当前Action转化为新的组件，请确认")
+    action_res = result
+    st.info(f"action_tool: {action.tool}")
+    st.info(f"action_tool_input: ")
+    st.json(action.tool_input)
 
-def test_display_conversation():
-    # 从文件加载ConversationInfo对象
-    loaded_conversation = load_conversation_info('example_conversation.pkl')
-    display_conversation_info(loaded_conversation)
-    print(st.session_state)
+    # st.code(action.tool_input)
+    st.info(f"action_tool_result: {action_res}")
+
+    st.button("我要转换", key="button_confirm_action_to_component", on_click=set_state_confirm_action_to_module, args=[True])
+
+
+def execute_action_to_module(module_generator: Callable[[AgentAction, str, str, int], Module]):
+    if get_state_confirm_action_to_module():
+        action = get_state_action_to_module_args()["action"]
+        result = get_state_action_to_module_args()["result"]
+        question = get_state_action_to_module_args()["question"]
+        index = get_state_action_to_module_args()["index"]
+        @st.cache_data
+        def module_generator_cached(_action, result, question, index, action_log)->Module:
+            """
+            action前加_是因为action不能被hash，所以不能作为cache的key
+            所以使用一个action_log作为cache的key
+            """
+            return module_generator(_action, result, question, index)
+
+        module = module_generator_cached(action, result, question, index, action.log)
+        set_state_converted_module(module)
+
+def show_module():
+    module = get_state_converted_module()
+    if module:
+        st.title("New Module")
+        display_module(module)
 
 
 if __name__ == '__main__':
-    # test_display_conversation()
-    # if "action_to_component" in st.session_state:
-    #     kwargs = st.session_state["action_to_component"]
-    #     action_to_module_confirm(**kwargs)
-    #     execute_action_to_module(module_generator=from_python_module_store)
-    #     show_module()
+    def test_display_conversation():
+        # 从文件加载ConversationInfo对象
+        loaded_conversation = load_conversation_info('example_conversation.pkl')
+        display_conversation_info(loaded_conversation)
 
-    print('重新加载')
 
-    if st.button("test"):
-        st.write("test")
-        if st.button("test3"):
-            st.write("test3")
+    def test_fake_module_generator(action: AgentAction, result: str, question: str, index: int) -> Module:
+        st.title("Fake Module Generator")
+        st.subheader("Original Action")
+        st.write(action)
+        st.subheader("Original Result")
+        st.write(result)
+        st.subheader("Original Question")
+        st.write(question)
 
-    st.divider()
+        st.title("Generated Module")
+        params = [
+            Param(name="param1", description="param1_description", default_value="param1_default_value", type="int"),
+            Param(name="param2", description="param2_description", default_value="param2_default_value", type="float"),
+            Param(name="param3", description="param3_description", default_value="param3_default_value", type="string"),
+        ]
+        module = Module(
+            name="fake_module",
+            description="fake_module_description",
+            params=params,
+            code="print('hello world')",
+        )
+        return module
+
+    test_display_conversation()
+    kwargs = get_state_action_to_module_args()
+    if kwargs:
+        action_to_module_confirm(**kwargs)
+        execute_action_to_module(module_generator=test_fake_module_generator)
+        show_module()

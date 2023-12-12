@@ -6,8 +6,5 @@ if __name__ == '__main__':
     tags = get_search_tags()
     set_modules_to_state(search_modules_by_name_and_tags(name, tags))
     module_side_bar()
-    # test_display_module()
-    # test_side_bar()
-    # test_show_modules()
     if get_current_module() is not None:
         display_module(get_current_module())

@@ -20,9 +20,18 @@ class RemoveJsonCodeBlockBorderOutputParser(AgentOutputParser):
         output = output.strip()
         return output
 
+class ExtractJsonOutputParser(AgentOutputParser):
+    def parse(self, output) -> str:
+        # use re to extract json in ```json ... ```
+        print('正在将LLM输出解析成TestParams: \n', output)
+        import re
+        json_str = re.search(r"```json(.*)```", output, re.DOTALL).group(1)
+        return json_str
 
-class JsonOutputParser(JSONAgentOutputParser):
+
+class TestParamJsonOutputParser(JSONAgentOutputParser):
     def parse(self, output) -> TestParams:
+        print('正在将LLM输出解析成TestParams: \n', output)
         return TestParams.parse_obj(json.loads(output))
 
 
@@ -41,7 +50,7 @@ def get_python_test_agent(llm):
 
     llm.bind(input_keys=["code", "code_args"])
 
-    agent = prompt | llm | RemoveJsonCodeBlockBorderOutputParser() | JsonOutputParser()
+    agent = prompt | llm | ExtractJsonOutputParser() | TestParamJsonOutputParser()
 
     return agent
 

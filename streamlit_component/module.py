@@ -102,13 +102,13 @@ def display_module_brief(module: Module):
             set_current_module(module)
 
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def all_modules_from_store() -> List[Module]:
     print("Loading all modules from store")
     return [from_python_module_store(module) for module in default_module_store.list()]
 
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def search_modules_by_name_and_tags(search: str, tags: List[str]) -> List[Module]:
     if not search and (not tags or len(tags) == 0):
         return all_modules_from_store()
