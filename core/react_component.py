@@ -19,9 +19,9 @@ from langchain.callbacks import get_openai_callback
 from langchain_core.tools import BaseTool
 from langchain_experimental.tools import PythonREPLTool
 from core.action_to_module.module_gen import ModuleGenerator
-from conversation import ConversationInfo
+from core.conversation import ConversationInfo
 from langchain.agents.structured_chat.prompt import PREFIX
-from interpreter.python_tool import PythonTool
+from core.interpreter.python_tool import PythonTool
 from core.python_test.run_test import test_exist_module
 from core.action_to_module.module_gen import default_module_generator
 from core.action_to_module.module_store import default_module_store

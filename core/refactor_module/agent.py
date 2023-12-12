@@ -6,7 +6,7 @@ from langchain.schema.messages import HumanMessage
 
 from core.action_to_module.module_store import default_module_store
 from core.refactor_module.base_agent import BaseAgent
-from core.refactor_module.module import Module, from_python_module_store
+from core.module.module import Module, from_python_module_store
 from core.refactor_module.prompt import SYSTEM_PROMPT_CN_TEMPLATE, USER_PROMPT_CN_TEMPLATE
 from llm.openai import OpenAIConfig
 

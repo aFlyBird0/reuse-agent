@@ -68,6 +68,21 @@ class ModuleStore:
         tags_filter = {"tags": {"$all": tags_list_and}}
         return self.list_by_filter(**tags_filter)
 
+    def list_by_name_and_tags_and(self, module_name: str, tags_list_and: list) -> List[PythonModule]:
+        # tag in module_tags and module_name contain module_name
+        regex = f".*{module_name}.*"
+        tags_filter = {"name": {"$regex": regex}}
+        if len(tags_list_and) > 0:
+            tags_filter["tags"] = {"$all": tags_list_and}
+        return self.list_by_filter(**tags_filter)
+
+    def list_by_name_and_tags_or(self, module_name: str, tags_list_or: list) -> List[PythonModule]:
+        regex = f".*{module_name}.*"
+        tags_filter = {"name": {"$regex": regex}}
+        if len(tags_list_or) > 0:
+            tags_filter["tags"] = {"$in": tags_list_or}
+        return self.list_by_filter(**tags_filter)
+
     def list_by_kind(self, kind: str) -> List[PythonModule]:
         modules = []
         for module in self.modules:

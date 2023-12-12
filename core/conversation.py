@@ -4,14 +4,14 @@ from langchain_core.agents import AgentAction
 from langchain_core.messages import BaseMessage
 
 class ConversationInfo:
-    question: str
-    actions: List[Tuple[AgentAction, str]] = None    # action, result
-    # actions_maps: Dict[str, AgentAction] = None  # nodeID->Action
-    messages: List[BaseMessage]
+    # question: str
+    # actions: List[Tuple[AgentAction, str]] = None    # action, result
+    # # actions_maps: Dict[str, AgentAction] = None  # nodeID->Action
+    # messages: List[BaseMessage]
 
     def __init__(self, question: str):
-        self.question = question
-        self.actions = []
+        self.question:str = question
+        self.actions: List[Tuple[AgentAction, str]] = []
         self.actions_maps = {}
         self.messages = []
 

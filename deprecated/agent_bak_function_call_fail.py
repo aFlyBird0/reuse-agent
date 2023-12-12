@@ -1,22 +1,19 @@
 
 from typing import List, Dict, Any, Optional
-from threading import Thread
 import json
 
 from langchain.agents import AgentOutputParser
 from langchain.chains import LLMChain
 from langchain.callbacks.manager import CallbackManager
 from langchain.tools.base import BaseTool
-from langchain.adapters.openai import convert_message_to_dict, convert_openai_messages
+from langchain.adapters.openai import convert_message_to_dict
 from langchain.prompts import ChatPromptTemplate
 from langchain.output_parsers.json import parse_partial_json
 from langchain.schema.messages import FunctionMessage, HumanMessage, AIMessage
-from langchain.prompts import HumanMessagePromptTemplate
 from core.refactor_module.prompt import SYSTEM_PROMPT_CN_TEMPLATE, USER_PROMPT_CN_TEMPLATE
 from llm.openai import OpenAIConfig
 from core.action_to_module.module_store import default_module_store
-from core.refactor_module.module import Module, from_python_module_store
-from core.python_test.agent import RemoveJsonCodeBlockBorderOutputParser
+from core.module.module import Module, from_python_module_store
 
 
 class ExtractJsonOutputParser(AgentOutputParser):

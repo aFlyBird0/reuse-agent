@@ -26,3 +26,11 @@ class OpenAIConfig:
             openai_api_base=OpenAIConfig.openai_api_base,
             temperature=0,
         )
+    @classmethod
+    def llm_with_params(cls, model: str, temperature: float):
+        return ChatOpenAI(
+            model_name=model,
+            openai_api_key=OpenAIConfig.openai_api_key,
+            openai_api_base=OpenAIConfig.openai_api_base,
+            temperature=temperature,
+        )

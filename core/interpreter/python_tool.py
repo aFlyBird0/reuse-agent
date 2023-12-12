@@ -31,7 +31,7 @@ class PythonTool(StructuredTool):
     def _run(
             self,
             code: str,
-            dependencies: list[str],
+            dependencies: list[str]=[],
             run_manager: Optional[CallbackManagerForToolRun] = None,
             **kwargs: Any,
     ) -> Any:
