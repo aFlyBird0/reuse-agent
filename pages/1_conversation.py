@@ -25,7 +25,7 @@ import streamlit as st
 from langchain_core.agents import AgentAction
 from core.action_to_module.module_store import default_module_store
 from core.conversation import ConversationInfo
-from core.module.module import Module, from_python_module_store
+from core.module.module import Module
 
 logger = setup_logger()
 
@@ -110,9 +110,7 @@ def extract_module(action: AgentAction, result: str, question: str, index: int) 
     """
     action -> module
     """
-    old_module_args = ActionToPythonAgent().python_args_from_action(action, question)
-    module = from_python_module_store(old_module_args)
-    return module
+    return ActionToPythonAgent().python_args_from_action(action, question)
 
 
 @st.cache_data
@@ -121,7 +119,7 @@ def test_module(_module: Module, module_name: str, module_description: str):
     测试Module
     """
     with st.spinner("Testing module..."):
-        test_res = test_exist_module(_module.to_python_module_store())
+        test_res = test_exist_module(_module)
         sm.set_state_module_test_result(test_res)
 
 def show_test_result(res: TestOutput):
@@ -164,8 +162,8 @@ def save_module_to_store():
     @st.cache_data
     def save(_module: Module, module_name: str, module_description: str):
         print(f"save module: {_module}")
-        st.success(f"已保存模块{module_name}至数据库")
-        default_module_store.add(module=_module.to_python_module_store())
+        st.success(f"已保存模块{module.name}至数据库")
+        default_module_store.add(module=_module)
     test_res = sm.get_state_module_test_result()
     module = get_state_converted_module()
     if test_res and module:

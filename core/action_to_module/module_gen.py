@@ -8,12 +8,12 @@ from langchain_experimental.tools import PythonREPLTool
 from langchain_experimental.utilities import PythonREPL
 # Third-party Library Imports
 from pydantic import BaseModel, create_model
-from .agent import ActionToPythonAgent
-from .module_define import PythonModule
-from .module_store import ModuleStore, default_module_store
+from core.action_to_module.agent import ActionToPythonAgent
+from core.action_to_module.module_define import example_fibonacci
+from core.action_to_module.module_store import ModuleStore, default_module_store
 from loggers.logs import setup_logger
-from .example import example_refactored_code, example_args_extracted_json
-from ..interpreter.python import PythonInterpreter
+from core.interpreter.python import PythonInterpreter
+from core.module.module import Module, Param
 
 
 class ModuleGenerator:
@@ -34,27 +34,34 @@ class ModuleGenerator:
         return None
 
     def from_python_action(self, action: AgentAction, question: str = "") -> Union[BaseTool, None]:
-        args: PythonModule = self.agent.python_args_from_action(action, question)
+        module: Module = self.agent.python_args_from_action(action, question)
 
         # self.store.add(args)
 
-        return self.from_python_args(args)
+        return self.from_python_args(module)
 
     def example_fibonacci_tool(self) -> StructuredTool:
-        args = PythonModule(
-            name=example_args_extracted_json["name"],
-            description=example_args_extracted_json["description"],
-            code=example_refactored_code,
-            args=example_args_extracted_json["args"],
-            tags=example_args_extracted_json["tags"]
-        )
-        return self.from_python_args(args)
+        # args = PythonModule(
+        #     name=example_args_extracted_json["name"],
+        #     description=example_args_extracted_json["description"],
+        #     code=example_refactored_code,
+        #     args=example_args_extracted_json["args"],
+        #     tags=example_args_extracted_json["tags"]
+        # )
+        return self.from_python_args(example_fibonacci())
 
-    def from_python_args(self, args: PythonModule) -> StructuredTool:
-        name = args.name
-        description = args.description
-        code = args.code
-        args = args.args
+    def from_python_args(self, args_schema: Module) -> StructuredTool:
+        name = args_schema.name
+        description = args_schema.description
+        code = args_schema.code
+        # args_schema = args_schema.schema_only_params()
+
+        def params_to_base_model(params: List[Param])-> Type[BaseModel]:
+            fields = {}
+            for param in params:
+                fields[param.name] = (param.param_type, ...)
+
+            return create_model("args", **fields)
 
         def funcWrapper(code: str) -> Callable:
             # 上层调用的时候，tool_input 是字典，对应 **kwargs
@@ -70,7 +77,7 @@ class ModuleGenerator:
         tool = StructuredTool(
             name=name,
             description=description,
-            args_schema=self._create_args_schema(args),
+            args_schema=params_to_base_model(args_schema.params),
             func=funcWrapper(code)
         )
 
@@ -78,19 +85,29 @@ class ModuleGenerator:
 
     # 将形如 {"tool_input": {"type": "string"}} 的形参字典转换为 pydantic 模型
     # 注：后面临时改成了更简单的形式，形如 {"tool_input": "string"}
-    def _create_args_schema(self, args_dict: dict, model_name: str = "DynamicModel") -> Type[BaseModel]:
-        model_fields = {}
-
-        # self.logger.info(f"start to create args schema, args_dict: {args_dict}")
-
-        for arg_name, arg_info in args_dict.items():
-            # arg_type = arg_info["type"]
-            arg_type = arg_info
-            model_fields[arg_name] = (eval(arg_type), ...)
-
-        dynamic_model = create_model(model_name, **model_fields)
-        # dynamic_model = type(model_name, (BaseModel,), model_fields)
-        return dynamic_model
+    # def _create_args_schema(self, args_dict: dict, model_name: str = "DynamicModel") -> Type[BaseModel]:
+    #     model_fields = {}
+    #
+    #     # self.logger.info(f"start to create args schema, args_dict: {args_dict}")
+    #
+    #     for arg_name, arg_info in args_dict.items():
+    #         # arg_type = arg_info["type"]
+    #         arg_type = arg_info
+    #         model_fields[arg_name] = (eval(arg_type), ...)
+    #
+    #     dynamic_model = create_model(model_name, **model_fields)
+    #     # dynamic_model = type(model_name, (BaseModel,), model_fields)
+    #     return dynamic_model
 
 
 default_module_generator = ModuleGenerator()
+
+if __name__ == '__main__':
+    module = example_fibonacci()
+    # schema = module.schema_only_params()
+    # print(schema.schema_json(indent=2))
+    tool = default_module_generator.from_python_args(module)
+    print(tool.name)
+    print(tool.description)
+    print(tool.args_schema.schema_json(indent=2))
+    print(tool.func)

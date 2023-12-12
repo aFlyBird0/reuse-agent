@@ -2,9 +2,9 @@ import logging
 from typing import Any, Union
 from pydantic import BaseModel, Field
 
+from core.module.module import Module
 from loggers.logs import setup_logger
 from core.interpreter.python import PythonInterpreter
-from core.action_to_module.module_define import PythonModule
 from core.python_test.agent import get_python_test_args
 from core.python_test.model import TestInput, TestOutput, TestParams
 
@@ -34,14 +34,14 @@ class PythonTestRunner:
             return self.test_output
 
 
-def test_exist_module(module: PythonModule) -> TestOutput:
-    test_params: TestParams = get_python_test_args(code=module.code, args_schema=module.args)
+def test_exist_module(module: Module) -> TestOutput:
+    test_params: TestParams = get_python_test_args(code=module.code, args_schema=module.to_dict_only_core_field())
     test_input = TestInput(
         name=module.name,
         description=module.description,
         code=module.code,
         dependencies=module.dependencies,
-        args_schema=module.args,
+        args_schema=module.params,
         args_input=test_params.args,
         expected_output=test_params.stdout
     )

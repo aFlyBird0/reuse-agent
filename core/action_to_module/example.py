@@ -1,5 +1,9 @@
 import json
 
+from pydantic.json import pydantic_encoder
+
+from core.module.module import Param
+
 example_origin_code = """
 def fibonacci(n):
     if n <= 1:
@@ -35,6 +39,9 @@ example_args_extracted_json = {
     "args": {
         "number": "int"
     },
+    "params": [
+        Param(name="number", param_type="int", description="第一个参数", required=True)
+    ],
     "tags": ["math", "fibonacci", "calculation"],
     "dependencies": []
 }
@@ -50,6 +57,6 @@ example_cn = {
     "example_task_log": "I want to calculate the fibonacci number of 10.",
     "example_origin_main_task": "What is the fibonacci number of 10 plus 23 and minus the 5th prime number?",
     "example_refactored_code": example_refactored_code,
-    "example_args_extracted_json": json.dumps(example_args_extracted_json, indent=4),
+    "example_args_extracted_json": json.dumps(example_args_extracted_json, indent=4, default=pydantic_encoder),
     "example_additional_info": example_cn_additional_info,
 }

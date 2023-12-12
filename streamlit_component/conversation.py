@@ -15,7 +15,7 @@ import streamlit_tags as st_tags
 from langchain_core.agents import AgentAction
 from core.action_to_module.module_store import default_module_store
 from core.conversation import ConversationInfo
-from core.module.module import Module, from_python_module_store, Param
+from core.module.module import Module, Param
 from streamlit_component.module import display_module
 
 
@@ -164,9 +164,9 @@ if __name__ == '__main__':
 
         st.title("Generated Module")
         params = [
-            Param(name="param1", description="param1_description", default_value="param1_default_value", type="int"),
-            Param(name="param2", description="param2_description", default_value="param2_default_value", type="float"),
-            Param(name="param3", description="param3_description", default_value="param3_default_value", type="string"),
+            Param(name="param1", description="param1_description", default_value="param1_default_value", param_type="int"),
+            Param(name="param2", description="param2_description", default_value="param2_default_value", param_type="float"),
+            Param(name="param3", description="param3_description", default_value="param3_default_value", param_type="str"),
         ]
         module = Module(
             name="fake_module",

@@ -1,6 +1,9 @@
 from typing import Any, Union
 from pydantic import BaseModel, Field
 
+from core.module.module import Param
+
+
 class TestParams(BaseModel):
     args: dict[str, Any] = Field(description="arguments input", default_factory=dict)
     stdout: str = Field(description="expected stdout", default="")
@@ -14,7 +17,7 @@ class TestInput(BaseModel):
     description: str = Field(description="The description of the code")
     code: str = Field(description="The code to execute")
     dependencies: list[str] = Field(description="dependencies to install with pip", default_factory=list)
-    args_schema: dict[str, str] = Field(description="arguments schema", default_factory=dict)
+    args_schema: list[Param] = Field(description="arguments schema")
     args_input: dict[str, Any] = Field(description="arguments input", default_factory=dict)
     expected_output: Any = Field(description="expected output", default=None)
 

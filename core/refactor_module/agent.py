@@ -3,10 +3,11 @@ from typing import List
 
 from langchain.agents import AgentOutputParser
 from langchain.schema.messages import HumanMessage
+from pydantic.json import pydantic_encoder
 
 from core.action_to_module.module_store import default_module_store
 from core.refactor_module.base_agent import BaseAgent
-from core.module.module import Module, from_python_module_store
+from core.module.module import Module
 from core.refactor_module.prompt import SYSTEM_PROMPT_CN_TEMPLATE, USER_PROMPT_CN_TEMPLATE
 from llm.openai import OpenAIConfig
 
@@ -26,7 +27,7 @@ class RefactorAgent(BaseAgent):
         return "RefactorAgent"
 
     def parse_output(self, messages):
-        msg_last = messages[-1]["content"]
+        msg_last = messages[-1].content
         module_dict = ExtractJsonOutputParser().parse(msg_last)
         return {"messages": messages, "module": module_dict}
 
@@ -44,18 +45,16 @@ def create_refactor_agent(llm) -> RefactorAgent:
 
 
 def test_refactor_or_combine(module_names: List[str], request: str):
-    agent = create_refactor_agent(OpenAIConfig.defaultLLM())
-
     store = default_module_store
 
     modules_in_store = [store.list_by_name(name)[0] for name in module_names]
 
     for m in modules_in_store:
-        print(f"模块名:{m.name}, 描述：{m.description}, 参数：{m.args}")
+        print(f"模块名:{m.name}, 描述：{m.description}, 参数：{m.params}")
         print(f"代码：{m.code}")
         print("--------------------------------")
 
-    modules = [from_python_module_store(m).to_json() for m in modules_in_store]
+    modules = [m.to_dict() for m in modules_in_store]
 
     modules_str = json.dumps(modules, indent=2, ensure_ascii=False)
 
@@ -68,8 +67,9 @@ def test_refactor_or_combine(module_names: List[str], request: str):
 
     inputs = {"messages": messages}
 
+    agent = create_refactor_agent(OpenAIConfig.defaultLLM())
     module_dict = agent(inputs)["module"]
-    msg = json.dumps(module_dict, indent=2)
+    msg = json.dumps(module_dict, indent=2, default=pydantic_encoder)
     print(msg)
     print(module_dict["code"])
 
@@ -85,7 +85,13 @@ def test_refactor():
     request = "我希望能指定，只列出前n个文件"
     test_refactor_or_combine(module_names=modules, request=request)
 
+def test_refactor2():
+    modules = ["calculate_fibonacci"]
+    request = "我希望能输出从1到n的斐波那契数列"
+    test_refactor_or_combine(module_names=modules, request=request)
+
 
 if __name__ == '__main__':
     # test_refactor()
-    test_combine()
+    # test_combine()
+    test_refactor2()

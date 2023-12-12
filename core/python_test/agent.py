@@ -3,6 +3,7 @@ import json
 from langchain.agents import AgentOutputParser
 from langchain.agents.output_parsers import JSONAgentOutputParser
 from langchain_core.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
+from pydantic.json import pydantic_encoder
 
 import core.action_to_module.example
 from core.interpreter.python_tool import PythonTool
@@ -61,7 +62,7 @@ python_test_agent = get_python_test_agent(OpenAIConfig.defaultLLM())
 def get_python_test_args(code: str, args_schema, agent=python_test_agent):
     res = agent.invoke({
         "code": code,
-        "code_args": json.dumps(args_schema)
+        "code_args": json.dumps(args_schema, indent=4, default=pydantic_encoder)
     })
     return res
 
@@ -79,7 +80,7 @@ if __name__ == '__main__':
 
     res = agent.invoke({
         "code": example_code,
-        "code_args": json.dumps(example_args_schema_dict)
+        "code_args": json.dumps(example_args_schema_dict, indent=4, default=pydantic_encoder)
     })
 
     print(res)

@@ -15,7 +15,7 @@ from .example import example_cn
 from loggers.logs import setup_logger
 from .output_parser import ArgsAndCodeOutputParser
 from .prompt import SYSTEM_PROMPT_CN_TEMPLATE, USER_PROMPT_CN_TEMPLATE
-from .module_define import PythonModule
+from core.module.module import Module
 
 
 # Third-party Library Imports
@@ -32,7 +32,7 @@ class ActionToPythonAgent():
     def _chain_type(self):
         return "ActionToPythonAgent"
 
-    def python_args_from_action(self, action: AgentAction, origin_main_task: str) -> PythonModule:
+    def python_args_from_action(self, action: AgentAction, origin_main_task: str) -> Module:
         with get_openai_callback() as cb:
             agent_finish: AgentFinish = self.agent.invoke(
                 {
@@ -47,11 +47,9 @@ class ActionToPythonAgent():
 
         print(f"total_tokens: {cb.total_tokens / 1000}k")
 
-        pyREPLArgs = agent_finish.return_values["python_args"]
+        module = agent_finish.return_values["module"]
 
-        pyREPLArgs.print(self.logger)
-
-        return pyREPLArgs
+        return module
 
     def setup_agent(self, llm):
         prompt = ChatPromptTemplate.from_messages(
@@ -100,5 +98,6 @@ print(f"{number_to_check} is prime")
 
     print(f"name: {args.name}")
     print(f"description: {args.description}")
-    print(f"args: {args.args}")
+    # print(f"args: {args.args}")
+    print(f"params: {args.params}")
     print(f"code: {args.code}")

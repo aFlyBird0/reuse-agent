@@ -13,7 +13,7 @@ from langchain.schema.messages import FunctionMessage, HumanMessage, AIMessage
 from core.refactor_module.prompt import SYSTEM_PROMPT_CN_TEMPLATE, USER_PROMPT_CN_TEMPLATE
 from llm.openai import OpenAIConfig
 from core.action_to_module.module_store import default_module_store
-from core.module.module import Module, from_python_module_store
+from core.module.module import Module
 
 
 class ExtractJsonOutputParser(AgentOutputParser):
@@ -169,7 +169,7 @@ def test_refactor_or_combine(module_names: List[str], request: str):
         print(f"代码：{m.code}")
         print("--------------------------------")
 
-    modules = [from_python_module_store(m).to_json() for m in modules_in_store]
+    modules = [m.to_dict() for m in modules_in_store]
 
     modules_str = json.dumps(modules, indent=2, ensure_ascii=False)
 

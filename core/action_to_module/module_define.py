@@ -4,12 +4,15 @@ from typing import List
 
 from langchain_core.load import Serializable
 
+from deprecated import deprecated
 from .example import example_refactored_code, example_args_extracted_json
 
 from pydantic import BaseModel, Field
+from core.module.module import Module, Param
 import json
 
 
+# @deprecated(version='0.1.0', reason="Use Module instead")
 class PythonModule(BaseModel):
     name: str
     description: str
@@ -31,12 +34,15 @@ class PythonModule(BaseModel):
     def to_json(self):
         return self.json(indent=4)
 
-def example_fibonacci() -> PythonModule:
-    args = PythonModule(
+def example_fibonacci() -> Module:
+    params = [
+        Param(name="number", param_type="int", description="The nth number of the fibonacci sequence", required=True)
+    ]
+    return Module(
         name=example_args_extracted_json["name"],
         description=example_args_extracted_json["description"],
         code=example_refactored_code,
-        args=example_args_extracted_json["args"],
-        tags=example_args_extracted_json["tags"]
+        params=params,
+        tags=example_args_extracted_json["tags"],
+        dependencies=example_args_extracted_json["dependencies"]
     )
-    return args

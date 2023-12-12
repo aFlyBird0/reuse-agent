@@ -6,19 +6,21 @@ from ctypes import Union
 from langchain.agents import AgentOutputParser
 from langchain_core.agents import AgentAction, AgentFinish
 from langchain_core.exceptions import OutputParserException
+from pydantic.json import pydantic_encoder
 
-from .module_define import PythonModule
+from core.module.module import Module, Param
 
 # 写一个函数，把输出中的json和python代码提取出来
 example_dict = {
     "name": "is_prime",
     "description": "Check if a number is prime.",
-    "args": {
-        "number": "int"
-    }
+    "tags": ["math", "prime"],
+    "params": [
+        Param(name="number", param_type="int", description="The number to check")
+    ],
 }
 
-example_json = json.dumps(example_dict, indent=4)
+example_json = json.dumps(example_dict, indent=4,  default=pydantic_encoder)
 example_python_code = """
 def is_prime(number):
     if number <= 1:
@@ -45,7 +47,7 @@ example = f"""
 ```
 """
 
-def split_json_and_code(text) -> (dict, str):
+def split_json_and_code(text) -> (str, str):
     json_pattern = r'```json(.*?)```'
     python_pattern = r'```python(.*?)```'
 
@@ -66,16 +68,20 @@ class ArgsAndCodeOutputParser(AgentOutputParser):
         """
         json_data, python_code = split_json_and_code(output)
         if json_data and python_code:
-            py_args = PythonModule(
-                name=json_data["name"],
-                description=json_data["description"],
-                tags=json_data["tags"],
-                code=python_code,
-                args=json_data["args"],
-            )
+            # module = Module(
+            #     name=json_data["name"],
+            #     description=json_data["description"],
+            #     tags=json_data["tags"],
+            #     code=python_code,
+            #     # args=json_data["args"],
+            #     params=json_data["params"],
+            #     dependencies=json_data["dependencies"]
+            # )
+            json_data["code"] = python_code
+            module = Module.from_json(json_data)
             return AgentFinish(
                 return_values={
-                    "python_args": py_args,
+                    "module": module,
                 },
                 log=output,
             )
@@ -90,5 +96,9 @@ class ArgsAndCodeOutputParser(AgentOutputParser):
 
 if __name__ == "__main__":
     dict_gotten, code_gotten = split_json_and_code(example)
-    # print(dict_gotten, "\n", code_gotten)
+    print(dict_gotten, "\n", code_gotten)
     assert dict_gotten == example_dict
+
+    parser = ArgsAndCodeOutputParser()
+    finish = parser.parse(example)
+    print(finish.return_values["module"].to_dict())

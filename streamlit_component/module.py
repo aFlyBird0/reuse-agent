@@ -15,7 +15,7 @@ from streamlit_tags import st_tags
 from langchain_core.agents import AgentAction
 from core.action_to_module.module_store import default_module_store
 from core.conversation import ConversationInfo
-from core.module.module import Module, from_python_module_store, Param
+from core.module.module import Module, Param
 
 key_data_modules = "key_data_modules"
 key_data_current_module = "key_data_current_module"
@@ -43,7 +43,7 @@ def display_module(module: Module):
     for param, color in zip(module.params, colors_params):
         expander = st.expander(param.name)
         with expander:
-            st.write(f"Type: {param.type}")
+            st.write(f"Type: {param.param_type}")
             st.write(f"Description: {param.description}")
             st.write(f"Required: {param.required}")
             if param.default:
@@ -85,8 +85,8 @@ def test_display_module():
         tags=["test", "example"],
         code="print('Hello, World!')",
         params=[
-            Param(name="param1", type="string", description="The first parameter"),
-            Param(name="param2", type="integer", description="The second parameter", default=42)
+            Param(name="param1", param_type="str", description="The first parameter"),
+            Param(name="param2", param_type="int", description="The second parameter", default=42)
         ],
         author="Test Author",
         dependencies=["numpy", "pandas"]
@@ -105,7 +105,7 @@ def display_module_brief(module: Module):
 @st.cache_data(ttl=60)
 def all_modules_from_store() -> List[Module]:
     print("Loading all modules from store")
-    return [from_python_module_store(module) for module in default_module_store.list()]
+    return default_module_store.list()
 
 
 @st.cache_data(ttl=60)
@@ -114,7 +114,7 @@ def search_modules_by_name_and_tags(search: str, tags: List[str]) -> List[Module
         return all_modules_from_store()
     search = search.lower()
     modules = default_module_store.list_by_name_and_tags_and(search, tags)
-    return [from_python_module_store(module) for module in modules]
+    return modules
 
 
 def get_modules_from_state() -> List[Module]:

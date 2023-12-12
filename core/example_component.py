@@ -1,6 +1,8 @@
-from action_to_module.agent import PythonModule
+from core.module.module import Module
 
-example_fabinacci_sqrt_component_args: PythonModule = PythonModule(
+#TODO: 修正一下，有重复的代码
+
+example_fabinacci_sqrt_component_args: Module = Module(
     name="calculate_fibonacci_and_add_sqrt",
     description="This function calculates the nth Fibonacci number, adds the square root of a given number to it, and rounds the result to a specified number of decimal places.",
     args={'fibonacci_index': 'int', 'sqrt_number': 'int', 'decimal_places': 'int'},
@@ -30,7 +32,7 @@ print(calculate_fibonacci_and_add_sqrt(fibonacci_index, sqrt_number, decimal_pla
 """
 )
 
-def get_examle_fibonacci_args() -> PythonModule:
+def get_examle_fibonacci_args() -> Module:
     name = "calculate_fibonacci"
     description = "calculate fibonacci"
     code = """
@@ -53,6 +55,6 @@ print(fibonacci(n))
         }
     }
 
-    return PythonModule(name=name, description=description, code=code, args=args, tags=tags)
+    return Module(name=name, description=description, code=code, args=args, tags=tags)
 
 example_fibonacci_args = get_examle_fibonacci_args()
