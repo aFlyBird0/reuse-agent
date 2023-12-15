@@ -1,7 +1,7 @@
 import random
 import sys
 import time
-from typing import Callable
+from typing import Callable, List
 
 sys.path.append('.')
 sys.path.append('..')
@@ -105,6 +105,29 @@ def display_conversation_info(conversation: ConversationInfo):
                             col1.button(button_label, key=button_key, on_click=on_click_save_args)
     else:
         st.write("No actions found.")
+
+def display_action(action: AgentAction, result:str, index: int, container: st.container):
+    with container:
+        with st.expander("Action " + str(index)):
+            col1, col2 = st.columns(2)
+            col1.write("Action Tool")
+            col1.write("Tool Input")
+            col1.write("Tool Result")
+            col1.write("Log")
+            col2.write(action.tool)
+            col2.write(action.tool_input)
+            col2.write(result)
+            col2.write(extract_content_before_first_action(action.log))
+            with st.container():
+                if action.tool == "python":
+                    button_label = f"把当前Action转化为新的组件"
+                    kwargs = {"action": action, "result": result}
+
+                    def on_click_save_args():
+                        set_state_action_to_module_args(kwargs)
+
+                    button_key = f"extract_to_component_{index}_{action.tool}"
+                    col1.button(button_label, key=button_key, on_click=on_click_save_args)
 
 def action_to_module_confirm(action: AgentAction, result: str, question: str, index: int):
     # 这里是执行动作的函数钩子

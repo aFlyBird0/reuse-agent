@@ -4,24 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c365fd41-3a94-44da-b9e8-509c153579fb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/paper.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/streamlit_component/combine_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/streamlit_component/module_sidebar.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/streamlit_component/refactor_module.py" afterDir="false" />
+    <list default="true" id="c365fd41-3a94-44da-b9e8-509c153579fb" name="Changes" comment="chore: 删除无用文件">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/react_component.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/react_component.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/refactor_module/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/refactor_module/agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_tree.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_tree_bak.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_conversation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1__conversation.py" afterPathEscaped="$PROJECT_DIR$/pages/1_🤖_conversation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/2_module_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/2_⭐️_module_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/3_refactor.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_combine_module.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/streamlit_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/_home.py" afterPathEscaped="$PROJECT_DIR$/🏠_home.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/streamlit_component/module.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_component/module.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/streamlit/streamlit_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/streamlit/streamlit_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/1__conversation.py" beforePathEscaped="$PROJECT_DIR$/pages/1_🤖_conversation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1__conversation.py" afterPathEscaped="$PROJECT_DIR$/pages/1_🤖_conversation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/2_⭐️_module_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/2_⭐️_module_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/streamlit_component/conversation.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_component/conversation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +29,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
     <option name="recentBranches">
       <RecentBranches>
         <option name="branchesForRepo">
@@ -80,24 +71,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/lhp/Code/Lab/reuse-agent/core/interpreter&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/lhp/Code/Lab/reuse-agent/pages",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$/core/interpreter" />
       <recent name="$PROJECT_DIR$/core/open-interpreter" />
     </key>
@@ -271,8 +263,26 @@
       <workItem from="1702279844044" duration="27466000" />
       <workItem from="1702356831673" duration="30366000" />
       <workItem from="1702528321285" duration="1175000" />
-      <workItem from="1702529510934" duration="12645000" />
+      <workItem from="1702529510934" duration="14333000" />
+      <workItem from="1702635385788" duration="6102000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: 重构streamlit &amp;&amp; 模块重构功能的前端">
+      <option name="closed" value="true" />
+      <created>1702631140540</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1702631140540</updated>
+    </task>
+    <task id="LOCAL-00002" summary="chore: 删除无用文件">
+      <option name="closed" value="true" />
+      <created>1702631165887</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702631165887</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +309,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: 重构streamlit &amp;&amp; 模块重构功能的前端" />
+    <MESSAGE value="chore: 删除无用文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: 删除无用文件" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -345,7 +360,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/core/react_component.py</url>
-          <line>217</line>
+          <line>235</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

@@ -146,6 +146,26 @@ def react_and_conversation(question:str, agent:AgentExecutor)->tuple[Any, Conver
 
     return output, conversation, total_tokens_k
 
+# 迭代式地返回 action 内容
+def react_and_conversation_iter(question: str, agent: AgentExecutor):
+    """
+    执行一轮对话，返回对话的结果
+    如果结果是2个，返回的是 [当前action, 当前action结果]
+    否则，返回的是 [任务结果，对话详情，token总消耗]
+    """
+    conversation = ConversationInfo(question=question)
+    with get_openai_callback() as cb:
+        for step in agent.iter({"input": question}, [MyCustomSyncHandler()]):
+            if intermediate_step := step.get("intermediate_step"):
+                action, action_result = intermediate_step[0]
+                logger.info(f"action: {action}, value: {action_result}")
+                conversation.add_action(action, action_result)
+                yield action, action_result
+            else:
+                output = step.get("output")
+    total_tokens_k = round(cb.total_tokens / 1000, 2)
+
+    yield output, conversation, total_tokens_k
 
 if __name__ == '__main__':
     # tools = [PythonREPLTool()]

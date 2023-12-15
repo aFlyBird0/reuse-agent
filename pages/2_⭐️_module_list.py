@@ -4,6 +4,7 @@ from streamlit_component.module_sidebar import setup_module_side_bar, get_sideba
 import streamlit as st
 
 if __name__ == '__main__':
+    st.set_page_config(layout="centered")
     setup_module_side_bar()
     module = get_sidebar_selected_module()
     if module is not None:

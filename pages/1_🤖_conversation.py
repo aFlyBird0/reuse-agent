@@ -14,8 +14,8 @@ from core.react_component import get_all_tools, get_agent
 from llm.openai import OpenAIConfig
 from loggers.logs import setup_logger
 from streamlit_component.conversation import display_conversation_info, action_to_module_confirm, \
-    execute_action_to_module, show_module
-from core.react_component import react_and_conversation
+    execute_action_to_module, show_module, display_action
+from core.react_component import react_and_conversation, react_and_conversation_iter
 from core.action_to_module.agent import ActionToPythonAgent
 from core.action_to_module.module_gen import default_module_generator
 from streamlit_component.conversation import get_state_converted_module, clear_state_converted_module, \
@@ -180,6 +180,16 @@ def start_conversation(question: str):
         return sm.get_state_result(), sm.get_state_question(), sm.get_state_total_tokens()
     return react_and_conversation(question, agent)
 
+def start_conversation_iter(question: str):
+    # 新建会话时，删除旧的重构好的模块
+    if get_state_converted_module():
+        clear_state_action_to_module_args()
+        clear_state_converted_module()
+    if sm.get_state_question() == question:
+        return sm.get_state_result(), sm.get_state_question(), sm.get_state_total_tokens()
+
+    return react_and_conversation_iter(question, agent)
+
 
 def main():
     st.title('Reuse Agent')  # 设置页面标题
@@ -190,14 +200,34 @@ def main():
     # 添加一个输入框
     question = st.chat_input('请输入任务，例如：帮我计算15之后的第一个素数', key=key_start_question)
 
+    # 是否是实时渲染
+    if_render_realtime = False
     # 输入问题，点击按钮
     if (question and key_finish_question not in st.session_state):
         # 当按钮被点击时，调用 process_input 函数，并显示处理后的结果
         spinner = st.spinner('正在处理中...')
+        if_render_realtime = True
+        # 展示用户输入的问题
+        st.subheader('Question:')
+        st.write(question)
+
+        st.subheader('Actions:')
+        action_container = st.container()
         with spinner:
-            processed_result, conversation, total_tokens_k = start_conversation(question)
+            # processed_result, conversation, total_tokens_k = start_conversation(question)
+            i = 0
+            for result in start_conversation_iter(question):
+                # st.info(result)
+                if len(result) == 3:  # 检查是否为最终结果
+                    processed_result, conversation, total_tokens_k = result
+                    # print("对话结束：", processed_result, conversation, total_tokens_k)
+                else:
+                    i += 1
+                    action, action_result = result
+                    display_action(action, action_result, i, action_container)
+                    # print("动作信息：", action, action_result)
         sm.set_state_question(question)
-        st.write('结果:', processed_result)
+        # st.write('结果:', processed_result)
 
         sm.set_state_conversation(conversation)
         sm.set_state_result(processed_result)
@@ -211,10 +241,12 @@ def main():
     # 展示对话过程
     conversation = sm.get_state_conversation()
     if conversation:
-        processed_result = sm.get_state_result()
-        total_tokens_k = sm.get_state_total_tokens()
+        # 防止重复渲染
+        if not if_render_realtime:
+            processed_result = sm.get_state_result()
+            total_tokens_k = sm.get_state_total_tokens()
 
-        display_conversation_info(conversation)
+            display_conversation_info(conversation)
 
         # 展示结果
         st.subheader('Result:')
@@ -247,6 +279,7 @@ def main():
 
 
 if __name__ == '__main__':
+    st.set_page_config(layout="centered")
     setup_sidebar()
     model = st.session_state.get("model_v", "gpt-3.5-turbo")
     temperature = st.session_state.get("temperature_v", 0.0)
