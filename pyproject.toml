@@ -22,6 +22,7 @@ pydantic = "1.10.13"
 streamlit = "^1.29.0"
 watchdog = "^3.0.0"
 streamlit-tags = "^1.2.8"
+st-annotated-text = "^4.0.1"
 
 
 [build-system]

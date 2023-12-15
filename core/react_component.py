@@ -196,12 +196,12 @@ if __name__ == '__main__':
                                   "module (Y/n)?:\n")
                 if _continue != "Y":
                     continue
-            new_module_tool = module_gen.from_python_args(module_args)
+            new_module_tool = default_module_generator.from_python_args(module_args)
 
             if new_module_tool and new_module_tool.name not in [tool.name for tool in tools]:
                 logger.info(f"new_module has been added: {new_module_tool.name}")
                 tools.append(new_module_tool)
-                module_store.add(module_args)
+                default_module_store.add(module_args)
 
 
     # 把新的 Tool 加入到 agent 中

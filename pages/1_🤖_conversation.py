@@ -193,7 +193,9 @@ def main():
     # 输入问题，点击按钮
     if (question and key_finish_question not in st.session_state):
         # 当按钮被点击时，调用 process_input 函数，并显示处理后的结果
-        processed_result, conversation, total_tokens_k = start_conversation(question)
+        spinner = st.spinner('正在处理中...')
+        with spinner:
+            processed_result, conversation, total_tokens_k = start_conversation(question)
         sm.set_state_question(question)
         st.write('结果:', processed_result)
 
@@ -222,8 +224,6 @@ def main():
 
         # 保存ConversationInfo对象到文件
         # save_conversation_info(conversation, 'example_conversation.pkl')
-
-        logger.info("finished!")
 
     # action 到 module 的转换
     kwargs = get_state_action_to_module_args()

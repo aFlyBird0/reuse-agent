@@ -43,6 +43,23 @@ def create_refactor_agent(llm) -> RefactorAgent:
     )
     return agent
 
+def refactor_or_combine(modules: List[Module], request: str)->Module:
+    modules_str = json.dumps(modules, indent=2, ensure_ascii=False, default=pydantic_encoder)
+
+    human_messages_module = USER_PROMPT_CN_TEMPLATE.format(modules=modules_str, additional_request=request)
+
+    # messages = [{"role": "user", "text": human_messages_module}]
+    messages = [
+        HumanMessage(content=human_messages_module)
+    ]
+
+    inputs = {"messages": messages}
+
+    agent = create_refactor_agent(OpenAIConfig.defaultLLM())
+    module_dict = agent(inputs)["module"]
+    print("重构后的 Module dict")
+    print(module_dict)
+    return Module.from_json(module_dict)
 
 def test_refactor_or_combine(module_names: List[str], request: str):
     store = default_module_store
