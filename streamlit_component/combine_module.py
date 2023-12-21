@@ -2,7 +2,6 @@ from typing import List
 
 import streamlit as st
 
-from core.action_to_module.module_store import default_module_store
 from core.module.module import Module
 from core.refactor_module.agent import refactor_or_combine
 from streamlit_component.module import display_module, show_and_save_module

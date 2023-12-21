@@ -9,7 +9,6 @@ sys.path.append('..')
 sys.path.append('../..')
 
 import streamlit as st
-from core.action_to_module.module_store import default_module_store
 from core.module.module import Module
 
 key_data_refactored_module = "refactored_module"

@@ -7,8 +7,8 @@ from pydantic.json import pydantic_encoder
 
 import core.action_to_module.example
 from core.interpreter.python_tool import PythonTool
-from core.python_test.model import TestParams
-from core.python_test.prompt import get_tool_description, example_code, example_args_schema_dict, \
+from core.test_module.model import TestParams
+from core.test_module.prompt import get_tool_description, example_code, example_args_schema_dict, \
     SYSTEM_PROMPT_CN, USER_PROMPT_CN, example_tool_description, example_response_schema
 from llm.openai import OpenAIConfig
 

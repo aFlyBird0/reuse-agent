@@ -5,12 +5,11 @@ from typing import Callable, Type, Union, List
 from langchain_core.agents import AgentAction
 from langchain_core.tools import BaseTool, StructuredTool
 from langchain_experimental.tools import PythonREPLTool
-from langchain_experimental.utilities import PythonREPL
 # Third-party Library Imports
 from pydantic import BaseModel, create_model
 from core.action_to_module.agent import ActionToPythonAgent
 from core.action_to_module.module_define import example_fibonacci
-from core.action_to_module.module_store import ModuleStore, default_module_store
+from core.module.module_store import ModuleStore, default_module_store
 from loggers.logs import setup_logger
 from core.interpreter.python import PythonInterpreter
 from core.module.module import Module, Param

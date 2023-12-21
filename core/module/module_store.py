@@ -5,6 +5,7 @@ from pymongo.server_api import ServerApi
 
 from core.action_to_module.module_define import example_fibonacci
 from core.module.module import Module, Param
+from database.mongo import default_db
 
 MODULE_COLLECTION = "module2"
 
@@ -15,17 +16,7 @@ class ModuleStore:
 
     def __init__(self):
         self.modules = []
-        uri = "mongodb+srv://aflybird0:8ORG2lDRRm36ntP7@cluster0.lh2vpp8.mongodb.net/?retryWrites=true&w=majority"
-        # Create a new client and connect to the server
-        self.client = MongoClient(uri, server_api=ServerApi('1'))
-        # Send a ping to confirm a successful connection
-        try:
-            self.client.admin.command('ping')
-            print("Pinged your deployment. You successfully connected to MongoDB!")
-        except Exception as e:
-            print(e)
-        # print(self.client.list_databases())
-        self.db = self.client["cluster0"]
+        self.db = default_db
         self.col = self.db.get_collection(MODULE_COLLECTION)
 
     def add(self, module: Module):

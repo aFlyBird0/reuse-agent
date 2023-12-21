@@ -3,14 +3,14 @@ import logging
 import sys
 
 from core.interpreter.python_tool import PythonTool
-from core.python_test.model import TestOutput
+from core.test_module.model import TestOutput
 
 sys.path.append('.')
 sys.path.append('..')
 sys.path.append('../..')
 
 # from callbacks.callback import MyCustomSyncHandler
-from core.python_test.run_test import test_exist_module
+from core.test_module.run_test import test_exist_module
 from core.react_component import get_all_tools, get_agent
 from llm.openai import OpenAIConfig
 from loggers.logs import setup_logger
@@ -18,13 +18,12 @@ from streamlit_component.conversation import display_conversation_info, action_t
     execute_action_to_module, show_module, display_action
 from core.react_component import react_and_conversation, react_and_conversation_iter
 from core.action_to_module.agent import ActionToPythonAgent
-from core.action_to_module.module_gen import default_module_generator
 from streamlit_component.conversation import get_state_converted_module, clear_state_converted_module, \
     get_state_action_to_module_args, clear_state_action_to_module_args
 
 import streamlit as st
 from langchain_core.agents import AgentAction
-from core.action_to_module.module_store import default_module_store
+from core.module.module_store import default_module_store
 from core.conversation import ConversationInfo
 from core.module.module import Module
 

@@ -1,4 +1,3 @@
-import random
 import sys
 from typing import List, Callable
 
@@ -8,9 +7,8 @@ sys.path.append('../..')
 
 import streamlit as st
 from streamlit_tags import st_tags
-from core.action_to_module.module_store import default_module_store
-from core.module.module import Module, Param
-from annotated_text import annotated_text
+from core.module.module_store import default_module_store
+from core.module.module import Module
 
 
 class StateManager:

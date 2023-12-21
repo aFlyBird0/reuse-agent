@@ -1,4 +1,4 @@
-from core.action_to_module.module_store import default_module_store
+from core.module.module_store import default_module_store
 from core.module.module import Module
 from core.refactor_module.base_agent import BaseAgent
 from langchain.agents import AgentOutputParser

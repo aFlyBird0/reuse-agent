@@ -5,8 +5,8 @@ from pydantic import BaseModel, Field
 from core.module.module import Module
 from loggers.logs import setup_logger
 from core.interpreter.python import PythonInterpreter
-from core.python_test.agent import get_python_test_args
-from core.python_test.model import TestInput, TestOutput, TestParams
+from core.test_module.agent import get_python_test_args
+from core.test_module.model import TestInput, TestOutput, TestParams
 
 logger = setup_logger()
 

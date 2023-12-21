@@ -12,7 +12,7 @@ from langchain.output_parsers.json import parse_partial_json
 from langchain.schema.messages import FunctionMessage, HumanMessage, AIMessage
 from core.refactor_module.prompt import SYSTEM_PROMPT_CN_TEMPLATE, USER_PROMPT_CN_TEMPLATE
 from llm.openai import OpenAIConfig
-from core.action_to_module.module_store import default_module_store
+from core.module.module_store import default_module_store
 from core.module.module import Module
 
 

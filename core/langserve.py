@@ -6,7 +6,7 @@ from langserve import add_routes
 
 from react_component import get_all_tools, get_runnable
 from action_to_module.agent import ActionToPythonAgent
-from python_test.agent import python_test_agent
+from test_module.agent import python_test_agent
 
 import llm.openai
 
