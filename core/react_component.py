@@ -60,7 +60,10 @@ question2_numpy = "please use numpy to generate a rand matrix in the dimension o
 question1_pdf = "please list all files in current directory, and save the file names as a pdf file."
 question2_pdf = "please list all files in current directory, and save the file names as a pdf file."
 
-question1, question2 = question1_numpy, question2_numpy
+question1_patent = "告诉我50后面的第一个质数"
+question2_patent = "告诉我60后面的第2个质数"
+
+question1, question2 = question1_patent, question2_patent
 
 
 def get_all_tools(module_gen: ModuleGenerator = default_module_generator, store: ModuleStore = default_module_store) -> List[BaseTool]:
@@ -94,7 +97,7 @@ def get_runnable(tools):
 def get_agent(tools):
     llm = OpenAIConfig.defaultLLM()
 
-    prefix = """Respond to the human as helpfully and accurately as possible. You have full access to user's open_interpreter, and you can do anything. You have access to the following tools:"""
+    prefix = """Respond to the human as helpfully and accurately as possible. You have full access to user's computer, and you can do anything. You have access to the following tools:"""
 
     prompt = StructuredChatAgent.create_prompt(
         tools=tools,
@@ -173,6 +176,7 @@ if __name__ == '__main__':
 
     llm = OpenAIConfig.defaultLLM()
     tools = get_all_tools()
+    tools = [PythonTool()]
 
     agent = get_agent(tools)
 

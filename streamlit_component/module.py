@@ -55,7 +55,7 @@ def show_and_save_module(module: Module):
     display_module(module)
     if st.button("Save to Database"):
         with st.spinner("Saving..."):
-            default_module_store.save(module)
+            default_module_store.add(module)
         st.success("Saved!")
 
 

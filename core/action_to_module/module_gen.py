@@ -50,10 +50,10 @@ class ModuleGenerator:
         # )
         return self.from_python_args(example_fibonacci())
 
-    def from_python_args(self, args_schema: Module) -> StructuredTool:
-        name = args_schema.name
-        description = args_schema.description
-        code = args_schema.code
+    def from_python_args(self, module: Module) -> StructuredTool:
+        name = module.name
+        description = module.description
+        code = module.code
         # args_schema = args_schema.schema_only_params()
 
         def params_to_base_model(params: List[Param])-> Type[BaseModel]:
@@ -77,7 +77,7 @@ class ModuleGenerator:
         tool = StructuredTool(
             name=name,
             description=description,
-            args_schema=params_to_base_model(args_schema.params),
+            args_schema=params_to_base_model(module.params),
             func=funcWrapper(code)
         )
 

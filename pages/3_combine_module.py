@@ -26,7 +26,8 @@ if __name__ == '__main__':
         show_modules_to_combine_names()
     with col1:
         show_modules_to_combine()
-        show_combined_module()
     request = st.chat_input("Combine modules above, input your request here")
     if request:
         combine_modules(get_modules_to_combine(), request)
+    with col1:
+        show_combined_module()

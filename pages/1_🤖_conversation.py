@@ -2,6 +2,7 @@ import logging
 
 import sys
 
+from core.interpreter.python_tool import PythonTool
 from core.python_test.model import TestOutput
 
 sys.path.append('.')
@@ -287,6 +288,11 @@ if __name__ == '__main__':
     llm = OpenAIConfig.llm_with_params(model=model, temperature=temperature)
 
     tools = get_all_tools()
+    tools =  [PythonTool()]
+    fibonacci_module = default_module_store.list_by_name("calculate_fibonacci")[0]
+    # tools = tools + [default_module_generator.from_python_args(module=fibonacci_module)]
+    for tool in tools:
+        print(tool)
 
     agent = get_agent(tools)
     logging.basicConfig(level=logging.INFO)

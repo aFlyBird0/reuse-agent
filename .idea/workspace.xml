@@ -5,13 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c365fd41-3a94-44da-b9e8-509c153579fb" name="Changes" comment="chore: 删除无用文件">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/module_to_app/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/module_to_app/agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/module_to_app/apps/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/module_to_app/apps/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/module_to_app/apps/pages/1_fibonacci.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/module_to_app/apps/pages/2_list_filenames_and_save_to_pdf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/module_to_app/apps/pages/3_fibonacci_with_range.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/module_to_app/apps/pages/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/module_to_app/prompt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/streamlit_server/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/streamlit_server/docker_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/streamlit_server/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/streamlit_server_old/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/streamlit_server_old/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/streamlit_server_old/streamlit_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prompts-patent/S1-任务解决.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prompts-patent/S2-模块生成.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/action_to_module/module_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/action_to_module/module_gen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/react_component.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/react_component.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/refactor_module/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/refactor_module/agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/1__conversation.py" beforePathEscaped="$PROJECT_DIR$/pages/1_🤖_conversation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1__conversation.py" afterPathEscaped="$PROJECT_DIR$/pages/1_🤖_conversation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/2_⭐️_module_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/2_⭐️_module_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/streamlit_component/conversation.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_component/conversation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/3_combine_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_combine_module.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/streamlit_component/module.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_component/module.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/streamlit_component/refactor_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_component/refactor_module.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +107,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
@@ -94,15 +119,15 @@
       <recent name="$PROJECT_DIR$/core/open-interpreter" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/core/module_to_app/apps/pages" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/callbacks" />
       <recent name="$PROJECT_DIR$/core/streamlit/component" />
       <recent name="$PROJECT_DIR$/core/streamlit/pages" />
-      <recent name="$PROJECT_DIR$/core/streamlit" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.react_component">
-    <configuration name="agent (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.test">
+    <configuration name="agent" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="reuse-agent" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -110,12 +135,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/refactor_module" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/module_to_app" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/refactor_module/agent.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/module_to_app/agent.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -124,7 +149,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="agent (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="docker_manager" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="reuse-agent" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -132,56 +157,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/python_test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/streamlit_server" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/python_test/agent.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="module_gen" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="reuse-agent" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/action_to_module" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/action_to_module/module_gen.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="module_store" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="reuse-agent" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/action_to_module" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/action_to_module/module_store.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/streamlit_server/docker_manager.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -212,20 +193,70 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="runner" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="reuse-agent" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/streamlit_server" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/streamlit_server/runner.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="reuse-agent" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/streamlit_server" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/streamlit_server/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.agent (2)" />
-      <item itemvalue="Python.module_gen" />
-      <item itemvalue="Python.module_store" />
+      <item itemvalue="Python.agent" />
+      <item itemvalue="Python.docker_manager" />
+      <item itemvalue="Python.runner" />
+      <item itemvalue="Python.test" />
       <item itemvalue="Python.react_component" />
-      <item itemvalue="Python.agent (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.agent" />
+        <item itemvalue="Python.docker_manager" />
+        <item itemvalue="Python.runner" />
         <item itemvalue="Python.react_component" />
-        <item itemvalue="Python.agent (1)" />
-        <item itemvalue="Python.module_store" />
-        <item itemvalue="Python.module_gen" />
-        <item itemvalue="Python.agent (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -264,7 +295,8 @@
       <workItem from="1702356831673" duration="30366000" />
       <workItem from="1702528321285" duration="1175000" />
       <workItem from="1702529510934" duration="14333000" />
-      <workItem from="1702635385788" duration="6102000" />
+      <workItem from="1702635385788" duration="11037000" />
+      <workItem from="1702870097989" duration="24468000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 重构streamlit &amp;&amp; 模块重构功能的前端">
       <option name="closed" value="true" />
@@ -360,7 +392,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/core/react_component.py</url>
-          <line>235</line>
+          <line>239</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -375,28 +407,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$USER_HOME$/Library/Caches/pypoetry/virtualenvs/reuse-agent-GvAZvjga-py3.11/lib/python3.11/site-packages/langchain_core/tools.py</url>
-          <line>238</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/Library/Caches/pypoetry/virtualenvs/reuse-agent-GvAZvjga-py3.11/lib/python3.11/site-packages/langchain_core/tools.py</url>
           <line>336</line>
           <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/Library/Caches/pypoetry/virtualenvs/reuse-agent-GvAZvjga-py3.11/lib/python3.11/site-packages/langchain_core/tools.py</url>
-          <line>311</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/Library/Caches/pypoetry/virtualenvs/reuse-agent-GvAZvjga-py3.11/lib/python3.11/site-packages/langchain_core/tools.py</url>
-          <line>310</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/Library/Caches/pypoetry/virtualenvs/reuse-agent-GvAZvjga-py3.11/lib/python3.11/site-packages/langchain_core/tools.py</url>
-          <line>246</line>
-          <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/deprecated/agent_bak_function_call_fail.py</url>
@@ -473,6 +485,26 @@
           <line>31</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/core/react_component.py</url>
+          <line>139</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/callbacks/callback.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/callbacks/callback.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/core/streamlit_server/test.py</url>
+          <line>66</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -488,10 +520,11 @@
     <SUITE FILE_PATH="coverage/reuse_agent$shell_test.coverage" NAME="shell_test Coverage Results" MODIFIED="1702025816357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/interpreter_test" />
     <SUITE FILE_PATH="coverage/langchain_test$exec_multi_func_test.coverage" NAME="exec_multi_func_test Coverage Results" MODIFIED="1701921461820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/langchain_test$cot_component.coverage" NAME="react_component Coverage Results" MODIFIED="1701922006854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/poc" />
-    <SUITE FILE_PATH="coverage/reuse_agent$react_component.coverage" NAME="react_component Coverage Results" MODIFIED="1702453280642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/reuse_agent$react_component.coverage" NAME="react_component Coverage Results" MODIFIED="1703070940935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
     <SUITE FILE_PATH="coverage/reuse_agent$module.coverage" NAME="module Coverage Results" MODIFIED="1702373962076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/module" />
     <SUITE FILE_PATH="coverage/langchain_test$py_exec_test.coverage" NAME="py_exec_test Coverage Results" MODIFIED="1701769025210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/poc" />
     <SUITE FILE_PATH="coverage/langchain_test$exec_multi_func_test__1_.coverage" NAME="exec_multi_func_test (1) Coverage Results" MODIFIED="1701873653757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/reuse_agent$docker_manager.coverage" NAME="docker_manager Coverage Results" MODIFIED="1703144131578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/streamlit_server" />
     <SUITE FILE_PATH="coverage/langchain_test$function_call_test.coverage" NAME="function_call_test Coverage Results" MODIFIED="1701937271547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/function_call_test" />
     <SUITE FILE_PATH="coverage/reuse_agent$open_interpreter_test.coverage" NAME="open-interpreter-test Coverage Results" MODIFIED="1702021710678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/open-interpreter-test" />
     <SUITE FILE_PATH="coverage/reuse_agent$react.coverage" NAME="react Coverage Results" MODIFIED="1701942298346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/agents_test" />
@@ -500,19 +533,21 @@
     <SUITE FILE_PATH="coverage/langchain_test$agent_iter.coverage" NAME="agent_iter Coverage Results" MODIFIED="1701631572547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/agents_test" />
     <SUITE FILE_PATH="coverage/reuse_agent$serve.coverage" NAME="serve Coverage Results" MODIFIED="1702036420954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
     <SUITE FILE_PATH="coverage/langchain_test$main.coverage" NAME="main Coverage Results" MODIFIED="1701589457898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/reuse_agent$test.coverage" NAME="test Coverage Results" MODIFIED="1703147898453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/streamlit_server" />
     <SUITE FILE_PATH="coverage/langchain_test$main__1_.coverage" NAME="tot Coverage Results" MODIFIED="1701594413966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tot" />
     <SUITE FILE_PATH="coverage/langchain_test$custom.coverage" NAME="custom Coverage Results" MODIFIED="1701665568010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tool" />
     <SUITE FILE_PATH="coverage/reuse_agent$agent__2_.coverage" NAME="agent (2) Coverage Results" MODIFIED="1702374693076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/python_test" />
     <SUITE FILE_PATH="coverage/langchain_test$python_chain.coverage" NAME="python_chain Coverage Results" MODIFIED="1701617519623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/agents_test" />
     <SUITE FILE_PATH="coverage/reuse_agent$react__1_.coverage" NAME="react (1) Coverage Results" MODIFIED="1701942044227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/agents_test" />
     <SUITE FILE_PATH="coverage/reuse_agent$module_gen.coverage" NAME="module_gen Coverage Results" MODIFIED="1702379263537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/action_to_module" />
-    <SUITE FILE_PATH="coverage/reuse_agent$agent.coverage" NAME="agent Coverage Results" MODIFIED="1702206292382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/module_function_call" />
+    <SUITE FILE_PATH="coverage/reuse_agent$agent.coverage" NAME="agent Coverage Results" MODIFIED="1703147072207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/module_to_app" />
     <SUITE FILE_PATH="coverage/langchain_test$output_parser.coverage" NAME="output_parser Coverage Results" MODIFIED="1701766559544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/poc/action_to_model_agent" />
     <SUITE FILE_PATH="coverage/langchain_test$react.coverage" NAME="react Coverage Results" MODIFIED="1701921717098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/agents_test" />
     <SUITE FILE_PATH="coverage/reuse_agent$prompt.coverage" NAME="prompt Coverage Results" MODIFIED="1702036122851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/python_test_agent" />
     <SUITE FILE_PATH="coverage/reuse_agent$output_parser.coverage" NAME="output_parser Coverage Results" MODIFIED="1702372875733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/action_to_module" />
     <SUITE FILE_PATH="coverage/reuse_agent$streamlit.coverage" NAME="streamlit Coverage Results" MODIFIED="1702146508304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
     <SUITE FILE_PATH="coverage/reuse_agent$agent__1_.coverage" NAME="agent (1) Coverage Results" MODIFIED="1702380145114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/refactor_module" />
+    <SUITE FILE_PATH="coverage/reuse_agent$runner.coverage" NAME="runner Coverage Results" MODIFIED="1703142266571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/streamlit_server" />
     <SUITE FILE_PATH="coverage/reuse_agent$run_test.coverage" NAME="run_test Coverage Results" MODIFIED="1702374205481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/python_test" />
     <SUITE FILE_PATH="coverage/reuse_agent$module_define.coverage" NAME="module_define Coverage Results" MODIFIED="1701958188146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/action_to_tool_agent" />
   </component>

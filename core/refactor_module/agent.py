@@ -57,8 +57,8 @@ def refactor_or_combine(modules: List[Module], request: str)->Module:
 
     agent = create_refactor_agent(OpenAIConfig.defaultLLM())
     module_dict = agent(inputs)["module"]
-    print("重构后的 Module dict")
-    print(module_dict)
+    # print("重构后的 Module dict")
+    # print(module_dict)
     return Module.from_json(module_dict)
 
 def test_refactor_or_combine(module_names: List[str], request: str):

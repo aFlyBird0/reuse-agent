@@ -1,0 +1,12 @@
+# fixme
+version: '3'
+services:
+  reuse-agent:
+    image: reuse-agent:latest
+    build:
+      context: .
+    command: streamlit run 🏠_home.py --server.port 8080
+    volumes:
+      - ./docker_volume/:/app/reuse-agent
+    ports:
+      - "8080:8080"

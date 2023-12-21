@@ -61,5 +61,7 @@ if __name__ == '__main__':
         display_module(module)
         request = st.chat_input("Refactor or Combine modules, input your request here")
         if request:
+            st.subheader("Request")
+            st.write(request)
             refactor_one_module(module, request)
     show_refactored_module()
