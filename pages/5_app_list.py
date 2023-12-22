@@ -31,11 +31,7 @@ def list_apps()->List[AppData]:
 def get_app_status(app: AppData):
     return AppManager.get_app_status(app)
 
-
-def main():
-    st.set_page_config(page_title='App Management', layout='wide')
-    st.title('App Management')
-
+def show_create_example_app():
     if st.button('添加示例app'):
         example_app = AppData(
             name='Hello World',
@@ -46,6 +42,11 @@ def main():
             container_name = 'docker_manager_hello_world_container'
         )
         create_app(example_app)
+
+
+def main():
+    st.set_page_config(page_title='App Management', layout='wide')
+    st.title('App Management')
 
     apps = list_apps()
     col_index, col_name, col_url, col_status, col_info, col_action = st.columns([1, 3, 3, 2, 2, 2])
@@ -87,38 +88,21 @@ def main():
             with modal.container():
                 st.json(app.json())
         with col_actions:
-            def on_change(selected_option: str):
-                action = selected_option
-                if action == '停止':
-                    with st.spinner('停止中'):
-                        stop_app(app.id)
-                elif action == '重启':
-                    with st.spinner('重启中'):
-                        restart_app(app)
-                elif action == '删除':
-                    with st.spinner('删除中'):
-                        delete_app(app.id)
-                if action != '...':
-                    st.rerun()
-            # if status == 'stopped':
-            #     action = st.selectbox("action", ['...', '重启', '删除'],key="操作" + app.id)
-            # else:
-            #     action = st.selectbox("action", ['...', '停止', '删除'],key="操作" + app.id)
             def render_buttons(app, status):
                 if status == 'stopped':
                     if st.button('重启', key='重启' + app.id):
                         with st.spinner('重启中'):
                             restart_app(app)
                         st.rerun()
+                    if st.button('删除', key='删除' + app.id):
+                        with st.spinner('删除中'):
+                            delete_app(app.id)
+                        st.rerun()
                 elif status == 'running':
                     if st.button('停止', key='停止' + app.id):
                         with st.spinner('停止中'):
                             stop_app(app.id)
                         st.rerun()
-                if st.button('删除', key='删除' + app.id):
-                    with st.spinner('删除中'):
-                        delete_app(app.id)
-                    st.rerun()
             # if status == 'stopped':
             #     action = st.expander("操作", expanded=False).selectbox("action", ['...', '重启', '删除'], key="操作" + app.id)
             # else:
@@ -128,6 +112,8 @@ def main():
                 render_buttons(app, status)
 
         i += 1
+
+    show_create_example_app()
 
 
 if __name__ == '__main__':

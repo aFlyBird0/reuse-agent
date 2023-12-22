@@ -1,9 +1,12 @@
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 
+from config.settings import get_settings
+
+
 def _get_default_db():
-    # TODO: seceret
-    uri = "mongodb+srv://aflybird0:8ORG2lDRRm36ntP7@cluster0.lh2vpp8.mongodb.net/?retryWrites=true&w=majority"
+    uri = get_settings().database.url
+    db_name = get_settings().database.db_name
     # Create a new client and connect to the server
     client = MongoClient(uri, server_api=ServerApi('1'))
     # Send a ping to confirm a successful connection
@@ -13,7 +16,7 @@ def _get_default_db():
     except Exception as e:
         print(e)
     # print(self.client.list_databases())
-    db = client["cluster0"]
+    db = client[db_name]
     return db
 
 
