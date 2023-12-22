@@ -26,6 +26,7 @@ st-annotated-text = "^4.0.1"
 uvicorn = "^0.25.0"
 docker = "^7.0.0"
 python-multipart = "^0.0.6"
+streamlit-modal = "^0.1.0"
 
 
 [build-system]

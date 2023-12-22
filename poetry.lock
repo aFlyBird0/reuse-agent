@@ -452,6 +452,20 @@ marshmallow = ">=3.18.0,<4.0.0"
 typing-inspect = ">=0.4.0,<1"
 
 [[package]]
+name = "deprecation"
+version = "2.1.0"
+description = "A library to handle automated deprecations"
+optional = false
+python-versions = "*"
+files = [
+    {file = "deprecation-2.1.0-py2.py3-none-any.whl", hash = "sha256:a10811591210e1fb0e768a8c25517cabeabcba6f0bf96564f8ff45189f90b14a"},
+    {file = "deprecation-2.1.0.tar.gz", hash = "sha256:72b3bde64e5d778694b0cf68178aed03d15e15477116add3fb773e581f9518ff"},
+]
+
+[package.dependencies]
+packaging = "*"
+
+[[package]]
 name = "diskcache"
 version = "5.6.3"
 description = "Disk Cache -- Disk and file backed persistent cache."
@@ -2794,6 +2808,20 @@ watchdog = {version = ">=2.1.5", markers = "platform_system != \"Darwin\""}
 snowflake = ["snowflake-connector-python (>=2.8.0)", "snowflake-snowpark-python (>=0.9.0)"]
 
 [[package]]
+name = "streamlit-modal"
+version = "0.1.0"
+description = "Modal for streamlit"
+optional = false
+python-versions = "*"
+files = [
+    {file = "streamlit_modal-0.1.0.tar.gz", hash = "sha256:ab505cbae2046f296588681306a72d2beb4adfc99639e9bfab0c77982ffd9a17"},
+]
+
+[package.dependencies]
+deprecation = "*"
+streamlit = "*"
+
+[[package]]
 name = "streamlit-tags"
 version = "1.2.8"
 description = "Tags custom component for Streamlit"
@@ -3418,4 +3446,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "71ef579a99c6796e3ec27b122cc95ffaed9af8cec4ba1a14de56ab5c5bf72a01"
+content-hash = "17beebf40d7b5a16e08847bf9efd4bdb44360768adc01f8d0d1689c4303e7cf0"

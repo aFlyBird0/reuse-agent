@@ -37,7 +37,7 @@ def create_module_to_app_agent(llm) -> ModuleToAppAgent:
     )
     return agent
 
-def module_to_app(module: Module, additional_request: str="")->str:
+def module_to_app_code(module: Module, additional_request: str= "")->str:
     module_str = module.to_dict()
 
     if additional_request:
@@ -57,7 +57,7 @@ def module_to_app(module: Module, additional_request: str="")->str:
 
 if __name__ == "__main__":
     module = default_module_store.list_by_name("list_files_and_create_pdf")[0]
-    app_code = module_to_app(module=module, additional_request="提供一个按钮，点击后可以下载生成的pdf文件。")
+    app_code = module_to_app_code(module=module, additional_request="提供一个按钮，点击后可以下载生成的pdf文件。")
 
     # app_code = module_to_app(module=module, additional_request="限制输入的范围，最小为1，最大为100。并且界面应该是中文的。")
 

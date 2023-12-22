@@ -5,36 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c365fd41-3a94-44da-b9e8-509c153579fb" name="Changes" comment="chore: 删除无用文件">
-      <change afterPath="$PROJECT_DIR$/backend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/streamlit_manager/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/streamlit_manager/database.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/streamlit_manager/docker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/mongo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/4_module_to_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/5_app_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/streamlit_manager/app_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/action_to_module/module_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/action_to_module/module_gen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/action_to_module/module_store.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/module/module_store.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/langserve.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/langserve.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/module_to_app/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/module_to_app/agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/python_test/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/test_module/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/python_test/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/test_module/agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/python_test/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/test_module/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/python_test/prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/test_module/prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/python_test/run_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/test_module/run_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/react_component.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/react_component.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/refactor_module/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/refactor_module/agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/streamlit_manager/docker_manager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/streamlit_manager/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/streamlit_manager/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deprecated/agent_bak_function_call_fail.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/agent_bak_function_call_fail.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1__conversation.py" beforePathEscaped="$PROJECT_DIR$/pages/1_🤖_conversation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1__conversation.py" afterPathEscaped="$PROJECT_DIR$/pages/1_🤖_conversation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/streamlit_component/combine_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_component/combine_module.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/streamlit_component/conversation.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_component/conversation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/streamlit_component/module.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_component/module.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/streamlit_component/module_sidebar.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_component/module_sidebar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/streamlit_component/refactor_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_component/refactor_module.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/module_to_app/apps/FileList.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/module_to_app/apps/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/module_to_app/apps/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/module_to_app/apps/pages/1_fibonacci.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/module_to_app/apps/pages/2_list_filenames_and_save_to_pdf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/module_to_app/apps/pages/3_fibonacci_with_range.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/module_to_app/apps/pages/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/streamlit_manager/docker.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/streamlit_manager/docker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/4_module_to_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/4_module_to_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/5_app_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_app_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,14 +104,14 @@
       <recent name="$PROJECT_DIR$/core/open-interpreter" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/core/streamlit_manager" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/core/module" />
       <recent name="$PROJECT_DIR$/core/module_to_app/apps/pages" />
       <recent name="$PROJECT_DIR$/callbacks" />
-      <recent name="$PROJECT_DIR$/core/streamlit/component" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.backend">
     <configuration name="agent" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="reuse-agent" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -148,6 +134,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="backend" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="reuse-agent" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="docker_manager" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="reuse-agent" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -162,28 +170,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/streamlit_server/docker_manager.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="react_component" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="reuse-agent" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/react_component.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -243,19 +229,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.backend" />
       <item itemvalue="Python.agent" />
       <item itemvalue="Python.docker_manager" />
       <item itemvalue="Python.runner" />
       <item itemvalue="Python.test" />
-      <item itemvalue="Python.react_component" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.backend" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.agent" />
         <item itemvalue="Python.docker_manager" />
         <item itemvalue="Python.runner" />
-        <item itemvalue="Python.react_component" />
       </list>
     </recent_temporary>
   </component>
@@ -297,7 +283,7 @@
       <workItem from="1702635385788" duration="11037000" />
       <workItem from="1702870097989" duration="31452000" />
       <workItem from="1703158515992" duration="2637000" />
-      <workItem from="1703161174282" duration="3935000" />
+      <workItem from="1703161174282" duration="15349000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 重构streamlit &amp;&amp; 模块重构功能的前端">
       <option name="closed" value="true" />
@@ -533,6 +519,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/reuse_agent$module_store.coverage" NAME="module_store Coverage Results" MODIFIED="1702379618552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/action_to_module" />
+    <SUITE FILE_PATH="coverage/reuse_agent$backend.coverage" NAME="backend Coverage Results" MODIFIED="1703219650251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/reuse_agent$shell_test.coverage" NAME="shell_test Coverage Results" MODIFIED="1702025816357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/interpreter_test" />
     <SUITE FILE_PATH="coverage/langchain_test$exec_multi_func_test.coverage" NAME="exec_multi_func_test Coverage Results" MODIFIED="1701921461820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/langchain_test$cot_component.coverage" NAME="react_component Coverage Results" MODIFIED="1701922006854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/poc" />

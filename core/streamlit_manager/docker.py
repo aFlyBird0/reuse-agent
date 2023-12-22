@@ -55,18 +55,10 @@ class DockerManager:
         container.restart()
 
     @staticmethod
-    def delete_container(container_id):
+    def stop_container(container_id):
         container = client.containers.get(container_id)
         print('stopping container', container_id)
         container.stop(timeout=3)
-
-        # wait until container is stopped
-        # while container.status != 'exited':
-        #     time.sleep(1)  # check every second
-        #     try:
-        #         container.reload()  # update status
-        #     except errors.NotFound:
-        #         break
 
         print('removing container', container_id)
         # 因为有 auto_remove，所以不用删除
@@ -95,3 +87,11 @@ class DockerManager:
     @staticmethod
     def get_access_url(container):
         return f'http://localhost:{container.ports["8501/tcp"][0]["HostPort"]}'
+
+    @staticmethod
+    def get_container_status(container_id):
+        try:
+            container = client.containers.get(container_id)
+        except errors.NotFound:
+            return "stopped"
+        return container.status
