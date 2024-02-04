@@ -1,6 +1,5 @@
-from langchain.agents import AgentType, Tool, initialize_agent
+from langchain.agents import Tool
 from langchain.chains import LLMMathChain
-from langchain.chat_models import ChatOpenAI
 from langchain.utilities import SerpAPIWrapper, SQLDatabase
 from langchain_experimental.sql import SQLDatabaseChain
 

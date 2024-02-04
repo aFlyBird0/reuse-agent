@@ -3,8 +3,8 @@
 import logging
 from typing import Any, List
 
-from langchain.agents import AgentExecutor, StructuredChatAgent
-from langchain.callbacks import get_openai_callback
+from langchain.agents import AgentExecutor, StructuredChatAgent, create_structured_chat_agent
+from langchain_community.callbacks import get_openai_callback
 from langchain.chains import LLMChain
 from langchain_core.tools import BaseTool
 
@@ -167,9 +167,6 @@ def react_and_conversation_iter(question: str, agent: AgentExecutor):
     yield output, conversation, total_tokens_k
 
 if __name__ == '__main__':
-    # tools = [PythonREPLTool()]
-    # example_fibonacci_tool = ToolGenerator().from_python_args(example_fabinacci_sqrt_component_args)
-
     llm = OpenAIConfig.defaultLLM()
     tools = get_all_tools()
     tools = [PythonTool()]

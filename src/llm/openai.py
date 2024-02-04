@@ -1,5 +1,4 @@
-from langchain.chat_models import ChatOpenAI
-
+from langchain_openai import ChatOpenAI
 from config.settings import get_settings
 
 openai_api_key = get_settings().llm.api_key

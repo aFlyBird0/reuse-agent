@@ -9,6 +9,7 @@ class AppData(BaseModel):
     name: str = Field(description='应用名称')
     description: str = Field(description='应用描述')
     # icon: str = Field(description='应用图标', default='📊')
+    author: str = Field(description='应用作者', default='admin')
     code: str
     dependencies: list = None
     id: str = Field(default_factory=lambda: str(ObjectId()), description='应用ID')

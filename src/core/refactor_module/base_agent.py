@@ -6,6 +6,7 @@ from langchain.chains import LLMChain
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.messages import AIMessage
 
+from loggers import logs
 
 class BaseAgent(LLMChain):
     total_tries: int = 1
@@ -13,6 +14,7 @@ class BaseAgent(LLMChain):
     system_template: str = ""
     allow_user_confirm: bool = False
     prompt: ChatPromptTemplate = ChatPromptTemplate.from_messages(messages=["system", ""])
+    logger = logs.setup_logger(name=__name__)
 
     @property
     def _chain_type(self):
@@ -56,6 +58,7 @@ class BaseAgent(LLMChain):
         current_try = 0
         while current_try < self.total_tries:
             prompt = self.construct_prompt(messages)
+
             llm_chain = (prompt | self.llm | self.postprocess_mesasge)
 
             message = llm_chain.invoke(inputs)

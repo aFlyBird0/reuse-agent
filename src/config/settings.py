@@ -19,10 +19,15 @@ class DatabaseSettings(CustomBaseSettings):
     url: str = Field(env="DATABASE_URL", default="mongodb://localhost:27017")
     db_name: str = Field(env="DATABASE_NAME", default="cluster0")
 
+class DockerSettings(CustomBaseSettings):
+    docker_port: str = Field(env="DOCKER_PORT", default="8080")
+    docker_host: str = Field(env="DOCKER_HOST", default="localhost")
+
 
 class Settings(BaseSettings):
     llm: LLMSettings = Field(default_factory=LLMSettings)
     database: DatabaseSettings = Field(default_factory=DatabaseSettings)
+    docker: DockerSettings = Field(default_factory=DockerSettings)
 
 
 @lru_cache

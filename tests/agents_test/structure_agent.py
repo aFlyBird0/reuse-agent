@@ -1,6 +1,3 @@
-from langchain.agents import AgentType, initialize_agent
-from langchain.chat_models import ChatOpenAI
-
 from llm.openai import OpenAIConfig
 
 # This import is required only for jupyter notebooks, since they have their own eventloop

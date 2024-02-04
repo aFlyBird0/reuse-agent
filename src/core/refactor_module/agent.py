@@ -5,6 +5,7 @@ from langchain.agents import AgentOutputParser
 from langchain.schema.messages import HumanMessage
 from pydantic.json import pydantic_encoder
 
+from callbacks.callback import MyCustomSyncHandler
 from core.module.module import Module
 from core.module.module_store import default_module_store
 from core.refactor_module.base_agent import BaseAgent
@@ -29,6 +30,7 @@ class RefactorAgent(BaseAgent):
 
     def parse_output(self, messages):
         msg_last = messages[-1].content
+        print('msg_last', msg_last)
         module_dict = ExtractJsonOutputParser().parse(msg_last)
         return {"messages": messages, "module": module_dict}
 
@@ -57,59 +59,9 @@ def refactor_or_combine(modules: List[Module], request: str)->Module:
     inputs = {"messages": messages}
 
     agent = create_refactor_agent(OpenAIConfig.defaultLLM())
-    module_dict = agent(inputs)["module"]
+    module_dict = agent.invoke(inputs, {
+        "callbacks": [MyCustomSyncHandler()]
+    })[agent.output_key]
     # print("重构后的 Module dict")
     # print(module_dict)
     return Module.from_json(module_dict)
-
-def test_refactor_or_combine(module_names: List[str], request: str):
-    store = default_module_store
-
-    modules_in_store = [store.list_by_name(name)[0] for name in module_names]
-
-    for m in modules_in_store:
-        print(f"模块名:{m.name}, 描述：{m.description}, 参数：{m.params}")
-        print(f"代码：{m.code}")
-        print("--------------------------------")
-
-    modules = [m.to_dict() for m in modules_in_store]
-
-    modules_str = json.dumps(modules, indent=2, ensure_ascii=False)
-
-    human_messages_module = USER_PROMPT_CN_TEMPLATE.format(modules=modules_str, additional_request=request)
-
-    # messages = [{"role": "user", "text": human_messages_module}]
-    messages = [
-        HumanMessage(content=human_messages_module)
-    ]
-
-    inputs = {"messages": messages}
-
-    agent = create_refactor_agent(OpenAIConfig.defaultLLM())
-    module_dict = agent(inputs)["module"]
-    msg = json.dumps(module_dict, indent=2, default=pydantic_encoder)
-    print(msg)
-    print(module_dict["code"])
-
-
-def test_combine():
-    modules = ["list_files", "read_file_content"]
-    request = "我希望先列出文件列表，然后读取前n个文件的内容"
-    test_refactor_or_combine(module_names=modules, request=request)
-
-
-def test_refactor():
-    modules = ["list_files"]
-    request = "我希望能指定，只列出前n个文件"
-    test_refactor_or_combine(module_names=modules, request=request)
-
-def test_refactor2():
-    modules = ["calculate_fibonacci"]
-    request = "我希望能输出从1到n的斐波那契数列"
-    test_refactor_or_combine(module_names=modules, request=request)
-
-
-if __name__ == '__main__':
-    # test_refactor()
-    # test_combine()
-    test_refactor2()

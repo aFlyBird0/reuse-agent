@@ -75,12 +75,12 @@ class ModuleStore:
             tags_filter["tags"] = {"$in": tags_list_or}
         return self.list_by_filter(**tags_filter)
 
-    def list_by_kind(self, kind: str) -> List[Module]:
-        modules = []
-        for module in self.modules:
-            if module.kind == kind:
-                modules.append(module)
-        return modules
+    # def list_by_kind(self, kind: str) -> List[Module]:
+    #     modules = []
+    #     for module in self.modules:
+    #         if module.kind == kind:
+    #             modules.append(module)
+    #     return modules
 
     def delete_by_id(self, id: str):
         self.col.delete_one({"_id": id})

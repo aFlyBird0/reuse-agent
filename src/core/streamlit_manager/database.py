@@ -29,18 +29,6 @@ class DatabaseManager:
 
     @staticmethod
     def save_app(app: AppData):
-        # # save or update
-        # id = app.id
-        # code = app.code
-        # dependencies = app.dependencies
-        # image_name = app.image_name
-        # container_id = app.container_id
-        # access_url = app.access_url
-        #
-        # print('正在保存app', id, dependencies, image_name, container_id, access_url)
-        #
-        # res= collection.update_one({'_id': id}, {'$set': {'code': code, 'dependencies': dependencies, 'image_name': image_name, 'container_id': container_id, 'access_url': access_url}}, upsert=True)
-        # print(res.raw_result)
 
         app_data_dict = app.dict()
         id = app_data_dict.pop("id")
@@ -49,18 +37,6 @@ class DatabaseManager:
 
         # # 使用upsert参数，如果没有找到符合条件的记录，就创建一个新的记录
         collection.update_one({"_id": ObjectId(id)}, {"$set": app_data_dict}, upsert=True)
-
-        # 检查是否已经有一个相同id的记录
-        # existing_record = collection.find_one({"_id": ObjectId(id)})
-        #
-        # if existing_record is None:
-        #     # 如果没有相同id的记录，创建一个新的记录
-        #     print('正在保存app', id, app_data_dict)
-        #     collection.insert_one(app_data_dict)
-        # else:
-        #     # 如果已经有一个相同id的记录，更新这个记录
-        #     print('正在更新app', id, app_data_dict)
-        #     collection.update_one({"_id": id}, {"$set": app_data_dict})
 
     @staticmethod
     def load_apps()->List[AppData]:

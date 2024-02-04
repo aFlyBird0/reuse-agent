@@ -3,6 +3,8 @@ import time
 
 from docker import DockerClient, errors
 
+from config.settings import get_settings
+
 DOCKER_FILE = """
 FROM python:3.11
 EXPOSE 8501
@@ -85,7 +87,9 @@ class DockerManager:
 
     @staticmethod
     def get_access_url(container):
-        return f'http://localhost:{container.ports["8501/tcp"][0]["HostPort"]}'
+        host = "http://"+str.removeprefix(get_settings().docker.docker_host, "http://")
+        port = container.ports["8501/tcp"][0]["HostPort"]
+        return f'{host}:{port}'
 
     @staticmethod
     def get_container_status(container_id):

@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from langchain.callbacks import get_openai_callback
+from langchain_community.callbacks import get_openai_callback
 from langchain.prompts import (ChatPromptTemplate, HumanMessagePromptTemplate,
                                SystemMessagePromptTemplate)
 from langchain_core.agents import AgentAction, AgentFinish

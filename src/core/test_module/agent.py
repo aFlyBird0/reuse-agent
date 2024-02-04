@@ -8,6 +8,7 @@ from langchain_core.prompts import (ChatPromptTemplate,
 from pydantic.json import pydantic_encoder
 
 import core.action_to_module.example
+from callbacks.callback import MyCustomSyncHandler
 from core.interpreter.python_tool import PythonTool
 from core.test_module.model import TestParams
 from core.test_module.prompt import (SYSTEM_PROMPT_CN, USER_PROMPT_CN,
@@ -68,7 +69,11 @@ def get_python_test_args(code: str, args_schema, agent=python_test_agent):
     res = agent.invoke({
         "code": code,
         "code_args": json.dumps(args_schema, indent=4, default=pydantic_encoder)
-    })
+    },
+        {
+            "callbacks": [MyCustomSyncHandler()]
+        }
+    )
     return res
 
 

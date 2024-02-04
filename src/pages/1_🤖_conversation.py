@@ -225,7 +225,7 @@ def main():
                 else:
                     i += 1
                     action, action_result = result
-                    display_action(action, action_result, i, action_container)
+                    display_action(action, question, action_result, i, action_container)
                     # print("动作信息：", action, action_result)
         sm.set_state_question(question)
         # st.write('结果:', processed_result)
@@ -287,8 +287,8 @@ if __name__ == '__main__':
     print(f"model: {model}, temperature: {temperature}")
     llm = OpenAIConfig.llm_with_params(model=model, temperature=temperature)
 
-    tools = get_all_tools()
-    # tools =  [PythonTool()]
+    # tools = get_all_tools()
+    tools =  [PythonTool()]
     fibonacci_module = default_module_store.list_by_name("calculate_fibonacci")[0]
     # tools = tools + [default_module_generator.from_python_args(module=fibonacci_module)]
     for tool in tools:

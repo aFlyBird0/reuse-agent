@@ -103,7 +103,7 @@ def display_conversation_info(conversation: ConversationInfo):
     else:
         st.write("No actions found.")
 
-def display_action(action: AgentAction, result:str, index: int, container: st.container):
+def display_action(action: AgentAction, question:str, result:str, index: int, container: st.container):
     with container:
         with st.expander("Action " + str(index)):
             col1, col2 = st.columns(2)
@@ -118,7 +118,7 @@ def display_action(action: AgentAction, result:str, index: int, container: st.co
             with st.container():
                 if action.tool == "python":
                     button_label = f"把当前Action转化为新的组件"
-                    kwargs = {"action": action, "result": result}
+                    kwargs = {"action": action, "result": result, "index": index, "question": question}
 
                     def on_click_save_args():
                         set_state_action_to_module_args(kwargs)

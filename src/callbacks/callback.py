@@ -22,6 +22,8 @@ class MyCustomSyncHandler(BaseCallbackHandler):
         """Run when chain starts running."""
         # print("\nLLM调用开始....\n")
         self.logger.info(f"\nprompts: {prompts}")
+        for prompt in prompts:
+            self.logger.info(f"prompt: {prompt}")
 
     def on_llm_end(self, response: langchain_core.outputs.LLMResult, **kwargs: Any) -> None:
         """Run when chain ends running."""
