@@ -15,7 +15,9 @@ COPY app.py ./
 CMD ["streamlit", "run", "app.py"]
 """
 
-client = DockerClient.from_env()
+# todo
+client = None
+# client = DockerClient.from_env()
 
 tmp_dir = ".streamlit_docker_tmp"
 if not os.path.exists(tmp_dir):

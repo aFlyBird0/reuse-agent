@@ -10,13 +10,13 @@ class CustomBaseSettings(BaseSettings):
 
 
 class LLMSettings(CustomBaseSettings):
-    api_base: str = Field(env="OPENAI_API_BASE", default="https://api.openai.com")
-    api_key: str = Field(env="OPENAI_API_KEY")
-    default_model: str = Field(env="DEFAULT_MODEL", default="gpt-4")
+    api_base: str = Field(env="OPENAI_API_BASE", default="https://api.gptapi.cyou/v1")
+    api_key: str = Field(env="OPENAI_API_KEY", default="sk-MrymAdMULNCmANziD6Bb5e51925047EdBf416377294bE673")
+    default_model: str = Field(env="DEFAULT_MODEL", default="gpt-3.5-turbo")
 
 
 class DatabaseSettings(CustomBaseSettings):
-    url: str = Field(env="DATABASE_URL", default="mongodb://localhost:27017")
+    url: str = Field(env="DATABASE_URL", default="mongodb+srv://aflybird0:8ORG2lDRRm36ntP7@cluster0.lh2vpp8.mongodb.net/?retryWrites=true&w=majority")
     db_name: str = Field(env="DATABASE_NAME", default="cluster0")
 
 class DockerSettings(CustomBaseSettings):

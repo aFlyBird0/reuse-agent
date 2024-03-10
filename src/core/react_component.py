@@ -56,7 +56,7 @@ question2_numpy = "please use numpy to generate a rand matrix in the dimension o
 question1_pdf = "please list all files in current directory, and save the file names as a pdf file."
 question2_pdf = "please list all files in current directory, and save the file names as a pdf file."
 
-question1_patent = "告诉我50后面的第一个质数"
+question1_patent = "告诉我50后面的第20个质数"
 question2_patent = "告诉我60后面的第2个质数"
 
 question1, question2 = question1_patent, question2_patent

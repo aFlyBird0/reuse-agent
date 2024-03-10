@@ -29,6 +29,7 @@ streamlit = "^1.30.0"
 langserve = "^0.0.41"
 langchainhub = "^0.1.14"
 langchain-openai = "^0.0.5"
+chromadb = "^0.4.23"
 
 
 [build-system]

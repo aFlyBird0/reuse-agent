@@ -30,7 +30,7 @@ class MyCustomSyncHandler(BaseCallbackHandler):
         # print("\nLLM调用结束....\n")
         # self.logger.info(f"llm_result: {response}")
         self.logger.info(f"last llm message: {response.generations[-1][-1].text}")
-        self.logger.info(f"llm id info: run_id: {kwargs['run_id']}, parent_run_id: {kwargs['parent_run_id']}")
+        # self.logger.info(f"llm id info: run_id: {kwargs['run_id']}, parent_run_id: {kwargs['parent_run_id']}")
         # print("Hi! I just woke up. Your llm is ending")
         # usage = response.llm_output["token_usage"]
         # # print(usage)

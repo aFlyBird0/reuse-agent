@@ -285,7 +285,8 @@ if __name__ == '__main__':
     model = st.session_state.get("model_v", "gpt-3.5-turbo")
     temperature = st.session_state.get("temperature_v", 0.0)
     print(f"model: {model}, temperature: {temperature}")
-    llm = OpenAIConfig.llm_with_params(model=model, temperature=temperature)
+    # llm = OpenAIConfig.llm_with_params(model=model, temperature=temperature)
+    llm = OpenAIConfig.defaultLLM()
 
     # tools = get_all_tools()
     tools =  [PythonTool()]
